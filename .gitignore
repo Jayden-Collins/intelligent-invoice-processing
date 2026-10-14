@@ -1,0 +1,22 @@
+.local/
+.screenshots/
+.entities/
+.tm/
+
+Data/Input/*
+Data/Output/*
+Data/Temp*
+Data/Archive/*
+!Data/**/.gitkeep
+
+Thumbs.db
+*.tmp
+~$*.xlsx
+################################################################################
+# Added by UiPath Studio
+# Prevent caching and local artifacts from being committed
+################################################################################
+.local
+################################################################################
+# End of UiPath Studio common ignores
+################################################################################
