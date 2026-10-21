@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Odoo(1)",
+  "Type": "Screen",
+  "Id": "_K7HyzfzFEy4a-eSzLmQKw",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/_K7HyzfzFEy4a-eSzLmQKw",
+  "ParentRef": "g3ERIxyViEiCnanPO7oZJw/3MrB9STTAEGpo2Bg80CRsw",
+  "Created": "2026-10-21T05:51:09.8642467Z",
+  "Updated": "2026-10-21T05:51:09.8642467Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

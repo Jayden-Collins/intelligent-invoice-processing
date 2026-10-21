@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="9LgLTY5dvUOgK3vQSkS8vQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="rpa-group-3.odoo.com/odoo/vendor-bills/account.move/2" DesignTimeRectangle="86, 223, 71, 26" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentname='action_post' tag='SPAN' type='' class='' aaname='Confirm' matching:parentname='fuzzy' fuzzylevel:parentname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Confirm' /&gt;" Guid="eab790d6-0444-4c56-bd05-8caf196246f1" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Draft Bill BILL/2026/10/0001' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="72, 214, 100, 45" ElementType="Button" FuzzySelectorArgument="&lt;webctrl name='action_post' tag='BUTTON' type='object' class='btn btn-primary' aaname='Confirm' matching:name='fuzzy' fuzzylevel:name='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Confirm' /&gt;" Guid="cee61b62-66f8-49a9-80bd-f78dad310b1e" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="166a2f26748c0d547474e2bfcdaa3f77.jpg" xmlns="">0AXVBp9m0WUCK6nml8sJnzA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

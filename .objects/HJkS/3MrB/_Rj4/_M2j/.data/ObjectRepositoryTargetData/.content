@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="XJGitJAdc06iHxdhxGj9Gg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="rpa-group-3.odoo.com/odoo/vendor-bills" DesignTimeRectangle="585, 122, 87, 36" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl aaname='Vendors' tag='SPAN' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Vendors' /&gt;" Guid="876aa09a-4ab8-4df2-87ef-e5e2836e225c" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Bills' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="573, 122, 111, 36" ElementType="Button" FuzzySelectorArgument="&lt;webctrl aaname='Vendors' tag='BUTTON' type='' class='fw-normal o-dropdown dropdown-toggle dropdown' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Vendors' /&gt;" Guid="83902a81-695b-43de-b3b7-dca7ccceb166" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="d12ff04d7c57c8bf75d0e0b0c875e348.jpg" xmlns="">0xMB8J5VRQ02mBcQYv15jqg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

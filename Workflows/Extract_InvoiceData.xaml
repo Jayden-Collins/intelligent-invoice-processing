@@ -136,9 +136,13 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Extract_InvoiceData" sap:VirtualizedContainerService.HintSize="1710.0000000000002,3315.9999999999995" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Extract_InvoiceData" sap:VirtualizedContainerService.HintSize="1726,3380" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="rawText" />
       <Variable x:TypeArguments="ss:SecureString" Name="groqAPIKey" />
@@ -193,7 +197,7 @@
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
-    <If Condition="[String.IsNullOrWhiteSpace(rawText)]" sap:VirtualizedContainerService.HintSize="452,818" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[String.IsNullOrWhiteSpace(rawText)]" sap:VirtualizedContainerService.HintSize="452,850" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,453" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
@@ -229,7 +233,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[String.IsNullOrWhiteSpace(rawText)]" sap:VirtualizedContainerService.HintSize="452,1908" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[String.IsNullOrWhiteSpace(rawText)]" sap:VirtualizedContainerService.HintSize="452,1940" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
@@ -249,13 +253,13 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,123" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[rawText]" />
-          <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="Groq_API_Key" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[groqAPIKey]" />
+          <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="Groq_API_Key" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[groqAPIKey]" />
           <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[prompt]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["{""model"": ""openai/gpt-oss-120b"", ""response_format"": { ""type"": ""json_object"" }, ""messages"": [{""role"": ""system"", ""content"": ""You are a strict data extraction API. Return ONLY a raw JSON object matching the requested schema. Do not include markdown, backticks, or conversational text. If a field is missing, output null for strings or 0 for numbers."" }, {""role"": ""user"", ""content"": ""Extract the invoice details into this exact JSON schema: { 'invoice_number': 'string', 'vendor_tax_id': 'string', 'subtotal': 0.00, 'tax_amount': 0.00, 'grand_total': 0.00, 'line_items': [ { 'item_code': 'string', 'quantity': 0, 'line_total': 0.00 } ] }. Note that Tax Amount is optional and may not be present. Here is the raw invoice text: " &amp; rawText.Replace("""", "'").Replace(Environment.NewLine, " ").Replace(vbCr, " ").Replace(vbLf, " ") &amp; """ }]}"]</InArgument>
+              <InArgument x:TypeArguments="x:String">["{""model"": ""openai/gpt-oss-120b"", ""response_format"": { ""type"": ""json_object"" }, ""messages"": [{""role"": ""system"", ""content"": ""You are a strict data extraction API. Return ONLY a raw JSON object matching the requested schema. Do not include markdown, backticks, or conversational text. If a field is missing, output null for strings or 0 for numbers."" }, {""role"": ""user"", ""content"": ""Extract the invoice details into this exact JSON schema: { 'invoice_number': 'string', 'vendor_name': 'string', 'vendor_tax_id': 'string', 'subtotal': 0.00, 'tax_amount': 0.00, 'tax_rate': 0.00, 'grand_total': 0.00, 'line_items': [ { 'item_code': 'string', 'description': 'string', 'unit_price': 0.00, 'quantity': 0, 'line_total': 0.00 } ] }. Note that Tax Amount is optional and may not be present. The tax rate should be a decimal, for example, 8% is 0.08. Here is the raw invoice text: " &amp; rawText.Replace("""", "'").Replace(Environment.NewLine, " ").Replace(vbCr, " ").Replace(vbLf, " ") &amp; """ }]}"]</InArgument>
             </Assign.Value>
           </Assign>
           <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BasicAuthSecurePassword="{x:Null}" BasicAuthUsername="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" AuthenticationType="OAuthToken" ContinueOnError="True" DisableSslVerification="False" DisplayName="HTTP Request" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xA;{&#xA;&#x9;New FileFormDataPart(),&#xA;&#x9;New BinaryFormDataPart(),&#xA;&#x9;New TextFormDataPart()&#xA;}]" sap:VirtualizedContainerService.HintSize="416,433" sap2010:WorkflowViewState.IdRef="NetHttpRequest_1" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="POST" Multiplier="2" OAuthToken="[new System.Net.NetworkCredential(string.Empty, groqAPIKey).Password]" PreferRetryAfterValue="True" RequestBodyType="Text" RequestUrl="https://api.groq.com/openai/v1/chat/completions" Result="[response]" RetryCount="3" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xA;{&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayload="[prompt]" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">

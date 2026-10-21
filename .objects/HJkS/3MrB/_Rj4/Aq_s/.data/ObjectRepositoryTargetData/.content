@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="0rhJSCswoUOsfMUgGxt7dQ" Reference="g3ERIxyViEiCnanPO7oZJw/Aq_sCatyF0GpPfCaN7n46w" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="rpa-group-3.odoo.com/odoo/vendor-bills/new" DesignTimeRectangle="166, 822, 374, 32" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='INPUT' /&gt;" Guid="635ff757-c5c0-4912-8555-c458ece9a5b3" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Draft Bill' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="c43299f47ba95a956596ebee08b1c640.jpg" xmlns="">0cesxjRTEu0eCWP-p-qDVsQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">KeyboardShortcut</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

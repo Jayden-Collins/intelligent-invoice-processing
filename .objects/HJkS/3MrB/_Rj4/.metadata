@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Draft Bill",
+  "Type": "Screen",
+  "Id": "_Rj4tQSQyUKATshomtNFcw",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/_Rj4tQSQyUKATshomtNFcw",
+  "ParentRef": "g3ERIxyViEiCnanPO7oZJw/3MrB9STTAEGpo2Bg80CRsw",
+  "Created": "2026-10-19T12:56:08.3531888Z",
+  "Updated": "2026-10-19T12:56:08.3531888Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
