@@ -4,6 +4,7 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Database.Activities": "[2.1.1]",
     "UiPath.IntegrationService.Activities": "[1.33.0]",
     "UiPath.OmniPage.Activities": "[2.1.1]",
     "UiPath.PDF.Activities": "[4.3.0]",

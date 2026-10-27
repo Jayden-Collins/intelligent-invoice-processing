@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Edge Bills",
+  "Type": "Screen",
+  "Id": "G-SKYGF-JkejkSIrfHHzvA",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/G-SKYGF-JkejkSIrfHHzvA",
+  "ParentRef": "g3ERIxyViEiCnanPO7oZJw/3MrB9STTAEGpo2Bg80CRsw",
+  "Created": "2026-10-21T06:24:20.8958911Z",
+  "Updated": "2026-10-21T06:24:20.8958911Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

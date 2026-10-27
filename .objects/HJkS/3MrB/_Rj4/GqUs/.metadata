@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Add a line",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "GqUsO9M9IEm6Rog9_si3NA",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/GqUsO9M9IEm6Rog9_si3NA",
+  "ParentRef": "g3ERIxyViEiCnanPO7oZJw/_Rj4tQSQyUKATshomtNFcw",
+  "Created": "2026-10-21T09:54:48.481686Z",
+  "Updated": "2026-10-21T09:54:48.481686Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

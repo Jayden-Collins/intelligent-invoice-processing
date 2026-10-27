@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Confirm",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "7XrVB_boOkKbCQYiADVP-A",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/7XrVB_boOkKbCQYiADVP-A",
+  "ParentRef": "g3ERIxyViEiCnanPO7oZJw/_Rj4tQSQyUKATshomtNFcw",
+  "Created": "2026-10-21T02:37:30.1070523Z",
+  "Updated": "2026-10-21T02:37:30.1070523Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

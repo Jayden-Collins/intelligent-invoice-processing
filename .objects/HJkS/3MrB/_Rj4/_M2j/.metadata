@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Vendors",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "_M2j7twL-ESgwU7H1YU2Ow",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/_M2j7twL-ESgwU7H1YU2Ow",
+  "ParentRef": "g3ERIxyViEiCnanPO7oZJw/_Rj4tQSQyUKATshomtNFcw",
+  "Created": "2026-10-21T05:43:25.9609718Z",
+  "Updated": "2026-10-21T05:43:25.9609718Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge Draft Bill",
+  "Type": "App",
+  "Id": "HJkS_aaWFEKTuC4GbLCTNw",
+  "Reference": "g3ERIxyViEiCnanPO7oZJw/HJkS_aaWFEKTuC4GbLCTNw",
+  "Created": "2026-10-19T12:56:08.2278132Z",
+  "Updated": "2026-10-19T12:56:08.2278132Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.4.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
