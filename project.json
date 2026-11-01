@@ -6,6 +6,7 @@
   "dependencies": {
     "UiPath.Database.Activities": "[2.1.1]",
     "UiPath.IntegrationService.Activities": "[1.33.0]",
+    "UiPath.Mail.Activities": "[2.12.10]",
     "UiPath.OmniPage.Activities": "[2.1.1]",
     "UiPath.PDF.Activities": "[4.3.0]",
     "UiPath.System.Activities": "[26.8.2]",

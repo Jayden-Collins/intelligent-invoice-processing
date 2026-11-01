@@ -128,35 +128,35 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ERP" sap:VirtualizedContainerService.HintSize="1889,5843" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ERP" sap:VirtualizedContainerService.HintSize="897.2,5836.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="796,5820" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="792,5813.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="794,5207" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="790.4,5201.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="760,2325" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.IfNotOpen]" ScopeGuid="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V2">
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="756.8,2322.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.IfNotOpen]" ScopeGuid="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="758,2121" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="755.2,2119.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NCheckState CheckWindowActive="True" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="724,2061" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V5">
+                  <uix:NCheckState CheckWindowActive="True" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="721.6,2059.2" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V5">
                     <uix:NCheckState.IfExists>
-                      <Sequence DisplayName="Do Nothing if the User is already Logged In" sap:VirtualizedContainerService.HintSize="722,90" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <Sequence DisplayName="Do Nothing if the User is already Logged In" sap:VirtualizedContainerService.HintSize="720,89.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -165,26 +165,26 @@
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="User is Not Logged In" sap:VirtualizedContainerService.HintSize="722,1635" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence DisplayName="User is Not Logged In" sap:VirtualizedContainerService.HintSize="720,1633.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Log In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="688,1575" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Version="V2">
+                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Log In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,1573.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Version="V2">
                           <uix:NApplicationCard.Body>
                             <ActivityAction x:TypeArguments="x:Object">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,1380" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,1379.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Enter Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,297" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Text="jaydrewcollins@gmailcom" Version="V5">
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Enter Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="651.2,296.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Text="kaiqi168168@gmail.com" Version="V5">
                                   <uix:NTypeInto.Target>
                                     <uix:TargetAnchorable BrowserURL="rpa-group-3.odoo.com/web/login" ContentHash="DicUBYEk7EawdYBggbhgJA" DesignTimeRectangle="816, 268, 358, 59" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='login' tag='INPUT' type='text' class='form-control' placeholder='Enter your email' aaname='Email' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e5fda323-9e08-4e12-b7af-0981e88fc8ce" InformativeScreenshot="656f1a52c049e707ff54470bf314dcfc.jpg" IsResponsive="True" Reference="g3ERIxyViEiCnanPO7oZJw/Nq0J2NTZPEu5zlzsejqBCQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odoo' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                                       <uix:TargetAnchorable.Anchors>
@@ -205,7 +205,7 @@
                                     </uix:VerifyExecutionTypeIntoOptions>
                                   </uix:NTypeInto.VerifyOptions>
                                 </uix:NTypeInto>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Password" sap:VirtualizedContainerService.HintSize="652,188" sap2010:WorkflowViewState.IdRef="TypeInto_10" Text="abcd1234">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Password" sap:VirtualizedContainerService.HintSize="651.2,188" sap2010:WorkflowViewState.IdRef="TypeInto_10" Text="Hq051005#c">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91d0847a-be91-4833-9ced-c72f1136e3ab" InformativeScreenshot="b3c9d171ef5dcd8d7975368e58c3fade" Selector="&lt;webctrl id='password' tag='INPUT' /&gt;">
                                       <ui:Target.TimeoutMS>
@@ -217,7 +217,7 @@
                                     </ui:Target>
                                   </ui:TypeInto.Target>
                                 </ui:TypeInto>
-                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Log In" sap:VirtualizedContainerService.HintSize="652,139" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Log In" sap:VirtualizedContainerService.HintSize="651.2,139.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
                                   <ui:Click.CursorPosition>
                                     <ui:CursorPosition Position="Center">
                                       <ui:CursorPosition.OffsetX>
@@ -239,9 +239,9 @@
                                     </ui:Target>
                                   </ui:Click.Target>
                                 </ui:Click>
-                                <uix:NCheckState sap2010:Annotation.AnnotationText="After Log In, ensure that the Vendors element is available. Otherwise, navigate to the Vendors Bills URL directly." DisplayName="Check for &quot;Vendors&quot; Element" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="652,696" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Version="V5">
+                                <uix:NCheckState sap2010:Annotation.AnnotationText="After Log In, ensure that the Vendors element is available. Otherwise, navigate to the Vendors Bills URL directly." DisplayName="Check for &quot;Vendors&quot; Element" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="651.2,695.2" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Version="V5">
                                   <uix:NCheckState.IfExists>
-                                    <Sequence DisplayName="Do Nothing if &quot;Vendor&quot; Element exists" sap:VirtualizedContainerService.HintSize="650,90" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                    <Sequence DisplayName="Do Nothing if &quot;Vendor&quot; Element exists" sap:VirtualizedContainerService.HintSize="649.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -250,13 +250,13 @@
                                     </Sequence>
                                   </uix:NCheckState.IfExists>
                                   <uix:NCheckState.IfNotExists>
-                                    <Sequence DisplayName="&quot;Vendor&quot; Element is Missing" sap:VirtualizedContainerService.HintSize="650,225" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                    <Sequence DisplayName="&quot;Vendor&quot; Element is Missing" sap:VirtualizedContainerService.HintSize="649.6,224.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <uix:NGoToUrl DisplayName="Go To Vendor Bills URL" sap:VirtualizedContainerService.HintSize="616,165" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Url="https://rpa-group-3.odoo.com/odoo/vendor-bills/" Version="V5" />
+                                      <uix:NGoToUrl DisplayName="Go To Vendor Bills URL" sap:VirtualizedContainerService.HintSize="616,164.8" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Url="https://rpa-group-3.odoo.com/odoo/vendor-bills/" Version="V5" />
                                     </Sequence>
                                   </uix:NCheckState.IfNotExists>
                                   <uix:NCheckState.Target>
@@ -320,13 +320,13 @@
               <uix:TargetApp Area="-1929, 103, 1938, 1218" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVDhPrVLBjcIwEKSElHAlUALPO69PSgfkAWuHD+OI/9EJdJISUkJKSAmgBbSsfTnpJBjJn4xnPJndxeLdQI2qc/yTXBgThcvjDB2FE+r4Ud7PkKhdJ+LJCMsz4YtR6m5IPux/C8RszrBdZ2KJZi/Chx4+rpR322Wi0GdJVqjUIBGfrViJAtak83x8Ep4HNXC7ZaYykFQmxaiEjZYpZmB/1Xx83UBnfvAbLa8E6p2UeX/M8fAkfDyaFP8qERROSqBuqmLevYxOeb+R8swYecJnsZVwsTEGenFukUB/bCOoxZwge/k7NqUug0QD8RlmN6Rk6SnbvnfhCuLC9xMqQhrAAAAAAElFTkSuQmCC" InformativeScreenshot="4e97cb9181b89b8c250f6ef03254a032.jpg" Selector="&lt;html app='msedge.exe' title='Bills' /&gt;" Url="https://rpa-group-3.odoo.com/odoo/vendor-bills/new" Version="V3" />
             </uix:NApplicationCard.TargetApp>
           </uix:NApplicationCard>
-          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Create New Vendor Bill" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="760,2822" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" ScopeGuid="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Version="V2">
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Create New Vendor Bill" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="756.8,2819.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" ScopeGuid="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,2627" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484.8,2624.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Int32" Default="0" Name="CurrentIndex" />
                   </Sequence.Variables>
@@ -336,7 +336,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Vendor Name" sap:VirtualizedContainerService.HintSize="452,188" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_VendorName &amp; &quot;[k(enter)]&quot;]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Vendor Name" sap:VirtualizedContainerService.HintSize="451.2,188" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_VendorName &amp; &quot;[k(enter)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8da9d2e8-fca5-4a34-89f4-81157694626a" InformativeScreenshot="a80db7472507589c4f2f8b47d0ffe677" Selector="&lt;html app='msedge.exe' title='Draft Bill' /&gt;&lt;webctrl id='partner_id_0' tag='INPUT' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -348,7 +348,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Invoice Number in Payment Ref" sap:VirtualizedContainerService.HintSize="452,188" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_InvoiceNumber]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Invoice Number in Payment Ref" sap:VirtualizedContainerService.HintSize="451.2,188" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_InvoiceNumber]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5f367ce0-c721-45dd-b6a0-185c24df4656" InformativeScreenshot="34e7f80293c9cf96812d9b2950b239d0" Selector="&lt;html app='msedge.exe' title='Draft Bill' /&gt;&lt;webctrl id='ref_0' tag='INPUT' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -360,7 +360,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Date" sap:VirtualizedContainerService.HintSize="452,188" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[DateTime.Now.ToString(&quot;MM/dd/yyyy&quot;)]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Date" sap:VirtualizedContainerService.HintSize="451.2,188" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[DateTime.Now.ToString(&quot;MM/dd/yyyy&quot;)]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3f24d99e-ab36-4b2a-9354-34765ce5b87a" InformativeScreenshot="5ef025521d3021b52656cb4f7bdc74e2" Selector="&lt;html app='msedge.exe' title='Draft Bill' /&gt;&lt;webctrl id='invoice_date_1' tag='INPUT' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -372,13 +372,13 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[CurrentIndex]" DataTable="[in_dt_LineItems]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="452,1560" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[CurrentIndex]" DataTable="[in_dt_LineItems]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="451.2,1558.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Enter Line Item Details" sap:VirtualizedContainerService.HintSize="450,1378" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <Sequence DisplayName="Enter Line Item Details" sap:VirtualizedContainerService.HintSize="449.6,1376.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:Int32" Default="0" Name="GridRow" />
                           </Sequence.Variables>
@@ -388,7 +388,7 @@
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign sap2010:Annotation.AnnotationText="The CurrentIndex begins at 0 whereas the GridRow used by Odoo begins at 2." DisplayName="Adjusted GridRow Variable" sap:VirtualizedContainerService.HintSize="416,220" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign sap2010:Annotation.AnnotationText="The CurrentIndex begins at 0 whereas the GridRow used by Odoo begins at 2." DisplayName="Adjusted GridRow Variable" sap:VirtualizedContainerService.HintSize="416,219.2" sap2010:WorkflowViewState.IdRef="Assign_4">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[GridRow]</OutArgument>
                             </Assign.To>
@@ -401,13 +401,13 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </Assign>
-                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add a line'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,194" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Version="V5">
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Add a line'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,193.6" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Version="V5">
                             <uix:NClick.Target>
                               <uix:TargetAnchorable BrowserURL="rpa-group-3.odoo.com/odoo/vendor-bills/account.move/new" ContentHash="QTkKTQ1ojUeY5YPC2CwirQ" DesignTimeRectangle="134, 897, 88, 31" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='{0}' tag='BUTTON' /&gt;&quot;, GridRow)]" Guid="225003e4-a874-4068-a85e-9a0b53354386" InformativeScreenshot="ad9a22b4ff8f1323bfe0716b40e5ce2f.jpg" Reference="g3ERIxyViEiCnanPO7oZJw/GqUsO9M9IEm6Rog9_si3NA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Draft Bill' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                             </uix:NClick.Target>
                           </uix:NClick>
                           <ui:SetToClipboard DisplayName="Set To Clipboard" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="SetToClipboard_1" Text="[CurrentRow(&quot;item_code&quot;).ToString]" />
-                          <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts 'TD'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,257" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" InteractionMode="HardwareEvents" ScopeIdentifier="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Shortcuts="[d(hk)][d(ctrl)]v[u(ctrl)][u(hk)]" Version="V5" />
+                          <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts 'TD'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,256.8" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_2" InteractionMode="HardwareEvents" ScopeIdentifier="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Shortcuts="[d(hk)][d(ctrl)]v[u(ctrl)][u(hk)]" Version="V5" />
                           <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Quantity" sap:VirtualizedContainerService.HintSize="416,188" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[CurrentRow(&quot;quantity&quot;).ToString]">
                             <ui:TypeInto.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d1c58af-a5ce-456f-9f34-3c09ca212a29" InformativeScreenshot="d6eb9b4792d14ce6d96a15ea0b136e7b" Selector="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl parentname='quantity' tableRow='{0}' tag='INPUT' /&gt;&quot;, GridRow)]">
@@ -448,7 +448,7 @@
                       </ActivityAction>
                     </ui:ForEachRow.Body>
                   </ui:ForEachRow>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click &quot;Save Manually&quot;" sap:VirtualizedContainerService.HintSize="452,139" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click &quot;Save Manually&quot;" sap:VirtualizedContainerService.HintSize="451.2,139.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -470,7 +470,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click &quot;Confirm&quot; to Post the Bill" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,304" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Version="V5">
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click &quot;Confirm&quot; to Post the Bill" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,303.2" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="da0aa217-3ccc-4e11-a0a3-94cdc4e96127" Version="V5">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="rpa-group-3.odoo.com/odoo/vendor-bills/account.move/2" ContentHash="9LgLTY5dvUOgK3vQSkS8vQ" DesignTimeRectangle="86, 223, 71, 26" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentname='action_post' tag='SPAN' type='' class='' aaname='Confirm' matching:parentname='fuzzy' fuzzylevel:parentname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Confirm' /&gt;" Guid="eab790d6-0444-4c56-bd05-8caf196246f1" InformativeScreenshot="166a2f26748c0d547474e2bfcdaa3f77.jpg" Reference="g3ERIxyViEiCnanPO7oZJw/7XrVB_boOkKbCQYiADVP-A" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Draft Bill BILL/2026/10/0001' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -519,7 +519,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap2010:Annotation.AnnotationText="If there is an error when creating the bill in Odoo, take a screenshot." DisplayName="Catch" sap:VirtualizedContainerService.HintSize="794,456" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence sap2010:Annotation.AnnotationText="If there is an error when creating the bill in Odoo, take a screenshot." DisplayName="Catch" sap:VirtualizedContainerService.HintSize="790.4,455.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <Sequence.Variables>
                 <Variable x:TypeArguments="ui:Image" Name="img_UIError" />
               </Sequence.Variables>
@@ -529,7 +529,7 @@
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="760,119" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[img_UIError]">
+              <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="756.8,118.4" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[img_UIError]">
                 <ui:TakeScreenshot.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="a5dc538f-ca88-4d77-ad90-e780ea6f1ed0">
                     <ui:Target.TimeoutMS>
@@ -541,8 +541,8 @@
                   </ui:Target>
                 </ui:TakeScreenshot.Target>
               </ui:TakeScreenshot>
-              <ui:SaveImage DisplayName="Save Image" FileName="[&quot;\Data\Archive\Failed\&quot; &amp; in_InvoiceNumber &amp; &quot;_UI_Crash_&quot; &amp; Now.ToString(&quot;HHmmss&quot;) &amp; &quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="760,167" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[img_UIError]" />
-              <Rethrow sap2010:Annotation.AnnotationText="Trigger the Catch block in the Main sequence." sap:VirtualizedContainerService.HintSize="760,79" sap2010:WorkflowViewState.IdRef="Rethrow_1">
+              <ui:SaveImage DisplayName="Save Image" FileName="[&quot;\Data\Archive\Failed\&quot; &amp; in_InvoiceNumber &amp; &quot;_UI_Crash_&quot; &amp; Now.ToString(&quot;HHmmss&quot;) &amp; &quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="756.8,166.4" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[img_UIError]" />
+              <Rethrow sap2010:Annotation.AnnotationText="Trigger the Catch block in the Main sequence." sap:VirtualizedContainerService.HintSize="756.8,79.2" sap2010:WorkflowViewState.IdRef="Rethrow_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -554,7 +554,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="794,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="790.4,24.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

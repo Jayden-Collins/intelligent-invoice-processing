@@ -167,7 +167,7 @@
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1740,7899" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="897.2,8036" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arr_InvoiceFiles" />
       <Variable x:TypeArguments="x:String" Name="str_DBConnectionString" />
@@ -178,7 +178,12 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Load Files in Folder" sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Email_DownloadInvoices - Invoke Workflow File (Workflows\Email_DownloadInvoices.xaml)" sap:VirtualizedContainerService.HintSize="548.8,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Workflows\Email_DownloadInvoices.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <Assign DisplayName="Load Files in Folder" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[arr_InvoiceFiles]</OutArgument>
       </Assign.To>
@@ -192,22 +197,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign DisplayName="DB Connection String" sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="DB Connection String" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[str_DBConnectionString]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["Driver={PostgreSQL UNICODE};Server=db.tgdtmfxtiewmxrdtjrrp.supabase.co;Port=5432;Database=postgres;Uid=postgres;Pwd=-BqJNS2TrLsgY-b;"]</InArgument>
+        <InArgument x:TypeArguments="x:String">["Driver={PostgreSQL UNICODE};Server=aws-0-ap-southeast-2.pooler.supabase.com;Port=6543;Database=postgres;Uid=postgres.tgdtmfxtiewmxrdtjrrp;Pwd=-BqJNS2TrLsgY-b;"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="550,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="550,7434" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
+    <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="548.8,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="548.8,7396" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,7312" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,7274.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="njl:JObject" Name="extractedData" />
             </Sequence.Variables>
@@ -216,7 +221,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="514,7252" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="513.6,7214.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="x:String" Name="db_InvoiceID" />
                 <Variable x:TypeArguments="x:String" Name="str_CurrentStep" />
@@ -224,7 +229,7 @@
                 <Variable x:TypeArguments="x:String" Name="str_VendorName" />
               </TryCatch.Variables>
               <TryCatch.Try>
-                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,6434" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,6396.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="str_VendorTaxID" />
                     <Variable x:TypeArguments="x:Double" Name="dbl_Total" />
@@ -243,7 +248,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_CurrentStep]</OutArgument>
                     </Assign.To>
@@ -251,7 +256,7 @@
                       <InArgument x:TypeArguments="x:String">["Data_Extraction"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Data_Extraction" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Data_Extraction" sap:VirtualizedContainerService.HintSize="478.4,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Message">["Starting PDF extraction for " &amp; Path.GetFileName(currentFile)]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_LogLevel">INFO</InArgument>
@@ -260,13 +265,13 @@
                       <InArgument x:TypeArguments="x:String" x:Key="in_StepName">[str_CurrentStep]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Extract_InvoiceData - Invoke Workflow File (Workflows\Extract_InvoiceData.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\PDF_ExtractInvoiceData.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Extract_InvoiceData - Invoke Workflow File (Workflows\Extract_InvoiceData.xaml)" sap:VirtualizedContainerService.HintSize="478.4,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\PDF_ExtractInvoiceData.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[currentFile]</InArgument>
                       <OutArgument x:TypeArguments="njl:JObject" x:Key="out_InvoiceJson">[extractedData]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign the extracted invoice data into separate variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,397" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign the extracted invoice data into separate variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,398.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -459,7 +464,7 @@
                       </Sequence>
                     </If.Then>
                   </If>
-                  <If sap2010:Annotation.AnnotationText="Verify that line items extracted by the LLM contains the required columns: item_code, description, quantity, unit_price, line_total." Condition="[Not (dt_LineItems.Columns.Contains(&quot;item_code&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;description&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;quantity&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;unit_price&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;line_total&quot;))]" DisplayName="Verify dt_LineItems Contains Required Columns" sap:VirtualizedContainerService.HintSize="478,480" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If sap2010:Annotation.AnnotationText="Verify that line items extracted by the LLM contains the required columns: item_code, description, quantity, unit_price, line_total." Condition="[Not (dt_LineItems.Columns.Contains(&quot;item_code&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;description&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;quantity&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;unit_price&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;line_total&quot;))]" DisplayName="Verify dt_LineItems Contains Required Columns" sap:VirtualizedContainerService.HintSize="478.4,478.4" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -468,7 +473,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -488,7 +493,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Check if the invoice already exists in Supabase." DataTable="[dt_DuplicateCheck]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="478,178" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT COUNT(invoice_id) FROM public.processed_invoices &#xA;WHERE vendor_name = ? AND invoice_number = ?;">
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Check if the invoice already exists in Supabase." DataTable="[dt_DuplicateCheck]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="478.4,178.4" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT COUNT(invoice_id) FROM public.processed_invoices &#xA;WHERE vendor_name = ? AND invoice_number = ?;">
                     <ui:ExecuteQuery.Parameters>
                       <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[str_VendorName]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="@InvNum">[str_InvoiceNumber]</InArgument>
@@ -499,21 +504,21 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExecuteQuery>
-                  <If sap2010:Annotation.AnnotationText="If the invoice already exists in Supabase, throw an exception to flag it for review." Condition="[CInt(dt_DuplicateCheck.Rows(0)(0)) &gt; 0]" sap:VirtualizedContainerService.HintSize="478,590" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If sap2010:Annotation.AnnotationText="If the invoice already exists in Supabase, throw an exception to flag it for review." Condition="[CInt(dt_DuplicateCheck.Rows(0)(0)) &gt; 0]" sap:VirtualizedContainerService.HintSize="451.2,556" sap2010:WorkflowViewState.IdRef="If_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,349" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,348" sap2010:WorkflowViewState.IdRef="Sequence_18">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message &quot;Duplicate Invoice Detected&quot;" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Duplicate invoice detected for &quot; &amp; str_VendorName &amp; &quot; - &quot; &amp; str_InvoiceNumber &amp; &quot;. Skipping ERP entry.&quot;]" />
-                        <Throw Exception="[new BusinessRuleException(&quot;Duplicate Invoice Detected: Requires Manual Review&quot;)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                        <ui:LogMessage DisplayName="Log Message &quot;Duplicate Invoice Detected&quot;" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Duplicate invoice detected for &quot; &amp; str_VendorName &amp; &quot; - &quot; &amp; str_InvoiceNumber &amp; &quot;. Skipping ERP entry.&quot;]" />
+                        <Throw Exception="[new BusinessRuleException(&quot;Duplicate Invoice Detected: Requires Manual Review&quot;)]" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="Throw_6" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
@@ -526,7 +531,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Add the Invoice to public.processed_invoices with the &quot;PROCESSING&quot; status." DataTable="[dt_InvoiceID]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="478,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xD;&#xA;VALUES (?, ?, ?, ?, ?, 'PENDING') &#xD;&#xA;ON CONFLICT (vendor_name, invoice_number) &#xD;&#xA;DO UPDATE SET processing_status = 'PENDING' &#xD;&#xA;RETURNING invoice_id;">
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Add the Invoice to public.processed_invoices with the &quot;PROCESSING&quot; status." DataTable="[dt_InvoiceID]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="478.4,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xA;VALUES (?, ?, ?, ?, ?, 'PENDING') &#xA;ON CONFLICT (vendor_name, invoice_number) &#xA;DO UPDATE SET processing_status = 'PENDING' &#xA;RETURNING invoice_id;">
                     <ui:ExecuteQuery.Parameters>
                       <InArgument x:TypeArguments="x:String" x:Key="@InvNum">[str_InvoiceNumber]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[str_VendorName]</InArgument>
@@ -540,7 +545,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExecuteQuery>
-                  <Assign DisplayName="Save the Generated InvoiceID" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign DisplayName="Save the Generated InvoiceID" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[db_InvoiceID]</OutArgument>
                     </Assign.To>
@@ -548,7 +553,7 @@
                       <InArgument x:TypeArguments="x:String">[dt_InvoiceID.Rows(0)(0).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <TryCatch DisplayName="Try Catch for Adding Invoice to Odoo and Supabase" sap:VirtualizedContainerService.HintSize="478,1651" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch for Adding Invoice to Odoo and Supabase" sap:VirtualizedContainerService.HintSize="478.4,1650.4" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <TryCatch.Try>
                       <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,1185" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>

@@ -113,7 +113,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Email_DownloadInvoices" sap:VirtualizedContainerService.HintSize="897.2,659.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Email_DownloadInvoices" sap:VirtualizedContainerService.HintSize="451.2,659.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="listMessages" />
     </Sequence.Variables>
