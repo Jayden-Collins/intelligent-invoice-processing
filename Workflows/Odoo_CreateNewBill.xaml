@@ -128,33 +128,33 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ERP" sap:VirtualizedContainerService.HintSize="1889,5843" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ERP" sap:VirtualizedContainerService.HintSize="1740,5952" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="796,5820" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="796,5929" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="794,5207" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="794,5316" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="760,2325" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.IfNotOpen]" ScopeGuid="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V2">
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="760,2434" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.IfNotOpen]" ScopeGuid="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="758,2121" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="758,2230" sap2010:WorkflowViewState.IdRef="Sequence_14">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NCheckState CheckWindowActive="True" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="724,2061" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V5">
+                  <uix:NCheckState CheckWindowActive="True" DisplayName="Check Whether Odoo is Logged In" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="724,2170" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="0e9d526b-bb8b-45a2-a431-f330cad444a7" Version="V5">
                     <uix:NCheckState.IfExists>
                       <Sequence DisplayName="Do Nothing if the User is already Logged In" sap:VirtualizedContainerService.HintSize="722,90" sap2010:WorkflowViewState.IdRef="Sequence_7">
                         <sap:WorkflowViewStateService.ViewState>
@@ -165,31 +165,31 @@
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="User is Not Logged In" sap:VirtualizedContainerService.HintSize="722,1635" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence DisplayName="User is Not Logged In" sap:VirtualizedContainerService.HintSize="722,1744" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Log In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="688,1575" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Version="V2">
+                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Log In" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="688,1684" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Version="V2">
                           <uix:NApplicationCard.Body>
                             <ActivityAction x:TypeArguments="x:Object">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,1380" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,1489" sap2010:WorkflowViewState.IdRef="Sequence_11">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Enter Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,297" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Text="jaydrewcollins@gmailcom" Version="V5">
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Enter Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,297" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Text="jaydrewcollins@gmail.com" Version="V5">
                                   <uix:NTypeInto.Target>
-                                    <uix:TargetAnchorable BrowserURL="rpa-group-3.odoo.com/web/login" ContentHash="DicUBYEk7EawdYBggbhgJA" DesignTimeRectangle="816, 268, 358, 59" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='login' tag='INPUT' type='text' class='form-control' placeholder='Enter your email' aaname='Email' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="e5fda323-9e08-4e12-b7af-0981e88fc8ce" InformativeScreenshot="656f1a52c049e707ff54470bf314dcfc.jpg" IsResponsive="True" Reference="g3ERIxyViEiCnanPO7oZJw/Nq0J2NTZPEu5zlzsejqBCQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odoo' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                                    <uix:TargetAnchorable BrowserURL="rpa-group-3.odoo.com/web/login" ContentHash="gEYnRyM3Yk24NZBilq_Acg" DesignTimeRectangle="816, 268, 358, 59" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='login' tag='INPUT' type='text' class='form-control' placeholder='Enter your email' aaname='Email Choose a user ' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="86c8fc9f-0fa6-44ce-b255-e56d14a49776" InformativeScreenshot="63ad16fe0de09d5f6650ff8212b1fee6.jpg" IsResponsive="True" Reference="g3ERIxyViEiCnanPO7oZJw/Nq0J2NTZPEu5zlzsejqBCQ" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odoo' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                                       <uix:TargetAnchorable.Anchors>
                                         <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                          <uix:Target DesignTimeRectangle="816, 218, 358, 36" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='form-label d-flex justify-content-between' aaname='Email' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Email' /&gt;" Guid="1aa08b4f-7e21-4da1-bc95-3de5f73a814e" SearchSteps="FuzzySelector" />
+                                          <uix:Target DesignTimeRectangle="816, 218, 358, 36" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='form-label d-flex justify-content-between' aaname='Email' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Email&amp;#xA;Choose a user' /&gt;" Guid="51de0d4b-49bc-495e-b189-17211bb6b8af" SearchSteps="FuzzySelector" />
                                         </scg:List>
                                       </uix:TargetAnchorable.Anchors>
                                     </uix:TargetAnchorable>
@@ -205,18 +205,27 @@
                                     </uix:VerifyExecutionTypeIntoOptions>
                                   </uix:NTypeInto.VerifyOptions>
                                 </uix:NTypeInto>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Enter Password" sap:VirtualizedContainerService.HintSize="652,188" sap2010:WorkflowViewState.IdRef="TypeInto_10" Text="abcd1234">
-                                  <ui:TypeInto.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91d0847a-be91-4833-9ced-c72f1136e3ab" InformativeScreenshot="b3c9d171ef5dcd8d7975368e58c3fade" Selector="&lt;webctrl id='password' tag='INPUT' /&gt;">
-                                      <ui:Target.TimeoutMS>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:Target.TimeoutMS>
-                                      <ui:Target.WaitForReady>
-                                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                                      </ui:Target.WaitForReady>
-                                    </ui:Target>
-                                  </ui:TypeInto.Target>
-                                </ui:TypeInto>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Enter Password" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,297" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="Simulate" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Text="abcd1234" Version="V5">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable BrowserURL="rpa-group-3.odoo.com/web/login" DesignTimeRectangle="816, 404, 320, 59" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl id='password' tag='INPUT' type='password' class='form-control' placeholder='Enter your password' aaname='Password' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="770bbf20-2d88-41cd-8574-b94cb99877f9" InformativeScreenshot="bf11918036f3d8224c79e193d79d0720.jpg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Odoo' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="816, 354, 100, 36" ElementType="Text" FuzzySelectorArgument="&lt;webctrl class='form-label' tag='LABEL' type='' aaname='Password' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Password' /&gt;" Guid="ddb0dcff-491c-4c34-af12-f5eaf32c1883" SearchSteps="FuzzySelector" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NTypeInto.Target>
+                                  <uix:NTypeInto.VerifyOptions>
+                                    <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                                      <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                        <InArgument x:TypeArguments="x:Boolean" />
+                                      </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                      <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                        <InArgument x:TypeArguments="x:Double" />
+                                      </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                    </uix:VerifyExecutionTypeIntoOptions>
+                                  </uix:NTypeInto.VerifyOptions>
+                                </uix:NTypeInto>
                                 <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Log In" sap:VirtualizedContainerService.HintSize="652,139" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
                                   <ui:Click.CursorPosition>
                                     <ui:CursorPosition Position="Center">

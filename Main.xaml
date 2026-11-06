@@ -73,6 +73,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Database</x:String>
       <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -167,7 +168,7 @@
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1740,7899" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1749,8595" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arr_InvoiceFiles" />
       <Variable x:TypeArguments="x:String" Name="str_DBConnectionString" />
@@ -178,7 +179,17 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Load Files in Folder" sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" sap2010:Annotation.AnnotationText="Fetch any new unread emails." DisplayName="Email_DownloadInvoices - Invoke Workflow File (Workflows\Email_DownloadInvoices.xaml)" sap:VirtualizedContainerService.HintSize="560,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Workflows\Email_DownloadInvoices.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <Assign DisplayName="Load Files in Folder" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[arr_InvoiceFiles]</OutArgument>
       </Assign.To>
@@ -192,22 +203,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign DisplayName="DB Connection String" sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="DB Connection String" sap:VirtualizedContainerService.HintSize="560,175" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[str_DBConnectionString]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["Driver={PostgreSQL UNICODE};Server=db.tgdtmfxtiewmxrdtjrrp.supabase.co;Port=5432;Database=postgres;Uid=postgres;Pwd=-BqJNS2TrLsgY-b;"]</InArgument>
+        <InArgument x:TypeArguments="x:String">["Driver={PostgreSQL UNICODE};Server=aws-0-ap-southeast-2.pooler.supabase.com;Port=6543;Database=postgres;Uid=postgres.tgdtmfxtiewmxrdtjrrp;Pwd=-BqJNS2TrLsgY-b;"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="550,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="550,7434" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
+    <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="560,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="560,7953" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,7312" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,7831" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="njl:JObject" Name="extractedData" />
             </Sequence.Variables>
@@ -216,7 +227,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="514,7252" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="524,7771" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="x:String" Name="db_InvoiceID" />
                 <Variable x:TypeArguments="x:String" Name="str_CurrentStep" />
@@ -224,7 +235,7 @@
                 <Variable x:TypeArguments="x:String" Name="str_VendorName" />
               </TryCatch.Variables>
               <TryCatch.Try>
-                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,6434" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="522,6953" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="str_VendorTaxID" />
                     <Variable x:TypeArguments="x:Double" Name="dbl_Total" />
@@ -243,7 +254,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_CurrentStep]</OutArgument>
                     </Assign.To>
@@ -251,7 +262,7 @@
                       <InArgument x:TypeArguments="x:String">["Data_Extraction"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Data_Extraction" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Data_Extraction" sap:VirtualizedContainerService.HintSize="488,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Message">["Starting PDF extraction for " &amp; Path.GetFileName(currentFile)]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_LogLevel">INFO</InArgument>
@@ -260,77 +271,77 @@
                       <InArgument x:TypeArguments="x:String" x:Key="in_StepName">[str_CurrentStep]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Extract_InvoiceData - Invoke Workflow File (Workflows\Extract_InvoiceData.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\PDF_ExtractInvoiceData.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Extract_InvoiceData - Invoke Workflow File (Workflows\Extract_InvoiceData.xaml)" sap:VirtualizedContainerService.HintSize="488,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\PDF_ExtractInvoiceData.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[currentFile]</InArgument>
                       <OutArgument x:TypeArguments="njl:JObject" x:Key="out_InvoiceJson">[extractedData]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign the extracted invoice data into separate variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,397" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign the extracted invoice data into separate variables." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="488,397" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:String">[str_InvoiceNumber]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[extractedData("invoice_number").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[If(extractedData("invoice_number") IsNot Nothing AndAlso extractedData("invoice_number").Type &lt;&gt; JTokenType.Null, extractedData("invoice_number").ToString, "UNKNOWN")]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:String">[str_VendorName]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[extractedData("vendor_name").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[If(extractedData("vendor_name") IsNot Nothing AndAlso extractedData("vendor_name").Type &lt;&gt; JTokenType.Null, extractedData("vendor_name").ToString, "UNKNOWN")]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:String">[str_VendorTaxID]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[extractedData("vendor_tax_id").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[If(extractedData("vendor_tax_id") IsNot Nothing AndAlso extractedData("vendor_tax_id").Type &lt;&gt; JTokenType.Null, extractedData("vendor_tax_id").ToString, "UNKNOWN")]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="sd:DataTable">[dt_LineItems]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="sd:DataTable">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataTable)(extractedData("line_items").ToString)]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable">[If(extractedData("line_items") IsNot Nothing AndAlso extractedData("line_items").Type &lt;&gt; JTokenType.Null, Newtonsoft.Json.JsonConvert.DeserializeObject(Of DataTable)(extractedData("line_items").ToString), New DataTable())]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:Double">[dbl_Subtotal]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[CDbl(extractedData("subtotal"))]</InArgument>
+                            <InArgument x:TypeArguments="x:Double">[If(extractedData("subtotal") IsNot Nothing AndAlso extractedData("subtotal").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("subtotal")), 0.0)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:Double">[dbl_TaxRate]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[CDbl(extractedData("tax_rate"))]</InArgument>
+                            <InArgument x:TypeArguments="x:Double">[If(extractedData("tax_rate") IsNot Nothing AndAlso extractedData("tax_rate").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("tax_rate")), 0.0)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:Double">[dbl_TaxAmount]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[CDbl(extractedData("tax_amount"))]</InArgument>
+                            <InArgument x:TypeArguments="x:Double">[If(extractedData("tax_amount") IsNot Nothing AndAlso extractedData("tax_amount").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("tax_amount")), 0.0)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:Double">[dbl_Total]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[CDbl(extractedData("grand_total"))]</InArgument>
+                            <InArgument x:TypeArguments="x:Double">[If(extractedData("grand_total") IsNot Nothing AndAlso extractedData("grand_total").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("grand_total")), 0.0)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                       </scg:List>
@@ -341,7 +352,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:MultipleAssign>
-                  <Assign sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_CurrentStep]</OutArgument>
                     </Assign.To>
@@ -349,7 +360,7 @@
                       <InArgument x:TypeArguments="x:String">["Data_Validation"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Data_Validation" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Data_Validation" sap:VirtualizedContainerService.HintSize="488,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Message">Invoice extraction successful. Validating totals and tax amount.</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_LogLevel">INFO</InArgument>
@@ -358,108 +369,7 @@
                       <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_DBConnection">[dbConnection]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <If sap2010:Annotation.AnnotationText="Validate individual line calculations (quantity * unit_price = line_total)" Condition="[dt_LineItems.AsEnumerable().Any(Function(row) Math.Abs((Convert.ToDouble(row(&quot;quantity&quot;)) * Convert.ToDouble(row(&quot;unit_price&quot;))) - Convert.ToDouble(row(&quot;line_total&quot;))) &gt; 0.01)]" DisplayName="Validate Line Totals" sap:VirtualizedContainerService.HintSize="478,368" sap2010:WorkflowViewState.IdRef="If_3">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[New BusinessRuleException(&quot;Line item multiplication discrepancy detected in invoice: &quot; &amp; str_InvoiceNumber)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_3" />
-                      </Sequence>
-                    </If.Then>
-                  </If>
-                  <Assign DisplayName="Calculate Subtotal From Line Items" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_4">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Double">[dbl_CalculatedSubtotal]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Double">[dt_LineItems.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("line_total")))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <If Condition="[Math.Abs( dbl_Subtotal - dbl_CalculatedSubtotal ) &gt; 0.01]" DisplayName="Validate Subtotal matches Sum of Line Item Totals" sap:VirtualizedContainerService.HintSize="478,337" sap2010:WorkflowViewState.IdRef="If_4">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[New BusinessRuleException(&quot;Subtotal mismatch for Invoice &quot; &amp; str_InvoiceNumber &amp; &quot;. Extracted Subtotal: &quot; &amp; dbl_Subtotal.ToString(&quot;F2&quot;) &amp; &quot;, Sum of Line Items: &quot; &amp; dbl_CalculatedSubtotal.ToString(&quot;F2&quot;))]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_4" />
-                      </Sequence>
-                    </If.Then>
-                  </If>
-                  <Assign sap2010:Annotation.AnnotationText="calculatedTaxRate = tax_amount / subtotal * 100" DisplayName="Calculate Tax Rate" sap:VirtualizedContainerService.HintSize="478,206" sap2010:WorkflowViewState.IdRef="Assign_5">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[int_CalculatedTaxRate]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[CInt(Math.Round((dbl_TaxAmount / dbl_Subtotal) * 100, 0))]</InArgument>
-                    </Assign.Value>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </Assign>
-                  <If sap2010:Annotation.AnnotationText="Validate extracted tax rate matches calculated tax rate." Condition="[Not(int_CalculatedTaxRate = CInt(dbl_TaxRate * 100))]" DisplayName="Validate Tax Rate" sap:VirtualizedContainerService.HintSize="478,401" sap2010:WorkflowViewState.IdRef="If_5">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[New BusinessRuleException(&quot;Tax rate mismatch for Invoice &quot; &amp; str_InvoiceNumber &amp; &quot;. Extracted Tax Rate: &quot; &amp; CInt(dbl_TaxRate * 100) &amp; &quot;, Calculated Tax Rate: &quot; &amp; int_CalculatedTaxRate)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_5" />
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <If sap2010:Annotation.AnnotationText="Validate grand total matches the combined total of subtotal and the tax amount." Condition="[Math.Abs(dbl_Total-(dbl_Subtotal + dbl_TaxAmount)) &gt; 0.01]" DisplayName="Validate Grand Total" sap:VirtualizedContainerService.HintSize="478,102" sap2010:WorkflowViewState.IdRef="If_2">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[New BusinessRuleException(&quot;Validation Failed: Subtotal plus Tax does not equal Grand Total for Invoice &quot; &amp; str_InvoiceNumber)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_2" />
-                      </Sequence>
-                    </If.Then>
-                  </If>
-                  <If sap2010:Annotation.AnnotationText="Verify that line items extracted by the LLM contains the required columns: item_code, description, quantity, unit_price, line_total." Condition="[Not (dt_LineItems.Columns.Contains(&quot;item_code&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;description&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;quantity&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;unit_price&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;line_total&quot;))]" DisplayName="Verify dt_LineItems Contains Required Columns" sap:VirtualizedContainerService.HintSize="478,480" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If sap2010:Annotation.AnnotationText="Verify that line items extracted by the LLM contains the required columns: item_code, description, quantity, unit_price, line_total." Condition="[Not (dt_LineItems.Columns.Contains(&quot;item_code&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;description&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;quantity&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;unit_price&quot;) AndAlso dt_LineItems.Columns.Contains(&quot;line_total&quot;))]" DisplayName="Verify dt_LineItems Contains Required Columns" sap:VirtualizedContainerService.HintSize="488,480" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -488,7 +398,144 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Check if the invoice already exists in Supabase." DataTable="[dt_DuplicateCheck]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="478,178" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT COUNT(invoice_id) FROM public.processed_invoices &#xA;WHERE vendor_name = ? AND invoice_number = ?;">
+                  <If sap2010:Annotation.AnnotationText="Validate individual line calculations (quantity * unit_price = line_total)" Condition="[dt_LineItems.AsEnumerable().Any(Function(row) Math.Abs((Convert.ToDouble(row(&quot;quantity&quot;)) * Convert.ToDouble(row(&quot;unit_price&quot;))) - Convert.ToDouble(row(&quot;line_total&quot;))) &gt; 0.01)]" DisplayName="Validate Line Totals" sap:VirtualizedContainerService.HintSize="488,284" sap2010:WorkflowViewState.IdRef="If_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_LineItems]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,603" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,421" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[Math.Abs( (Convert.ToDouble( CurrentRow(&quot;quantity&quot;) ) * Convert.ToDouble(CurrentRow(&quot;unit_price&quot;) ) ) - Convert.ToDouble( CurrentRow(&quot;line_total&quot;) )) &gt; 0.01]" sap:VirtualizedContainerService.HintSize="452,361" sap2010:WorkflowViewState.IdRef="If_7">
+                            <If.Then>
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Throw Exception="[New BusinessRuleException(&quot;Discrepancy in &quot; &amp; str_InvoiceNumber &amp; &quot; for item &quot; &amp; CurrentRow(&quot;item_code&quot;).ToString &amp; &quot;. Qty: &quot; &amp; CurrentRow(&quot;quantity&quot;).ToString &amp; &quot;, Price: &quot; &amp; CurrentRow(&quot;unit_price&quot;).ToString &amp; &quot;, Total: &quot; &amp; CurrentRow(&quot;line_total&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                  </ui:ForEachRow>
+                  <Assign DisplayName="Calculate Subtotal From Line Items" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Double">[dbl_CalculatedSubtotal]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Double">[dt_LineItems.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("line_total")))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[Math.Abs( dbl_Subtotal - dbl_CalculatedSubtotal ) &gt; 0.01]" DisplayName="Validate Subtotal matches Sum of Line Item Totals" sap:VirtualizedContainerService.HintSize="488,337" sap2010:WorkflowViewState.IdRef="If_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw Exception="[New BusinessRuleException(&quot;Subtotal mismatch for Invoice &quot; &amp; str_InvoiceNumber &amp; &quot;. Extracted Subtotal: &quot; &amp; dbl_Subtotal.ToString(&quot;F2&quot;) &amp; &quot;, Sum of Line Items: &quot; &amp; dbl_CalculatedSubtotal.ToString(&quot;F2&quot;))]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <Assign sap2010:Annotation.AnnotationText="calculatedTaxRate = tax_amount / subtotal * 100" DisplayName="Calculate Tax Rate" sap:VirtualizedContainerService.HintSize="488,206" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[int_CalculatedTaxRate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[CInt(Math.Round((dbl_TaxAmount / dbl_Subtotal) * 100, 0))]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <If sap2010:Annotation.AnnotationText="Validate extracted tax rate matches calculated tax rate." Condition="[Not(int_CalculatedTaxRate = CInt(dbl_TaxRate * 100))]" DisplayName="Validate Tax Rate" sap:VirtualizedContainerService.HintSize="488,401" sap2010:WorkflowViewState.IdRef="If_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw Exception="[New BusinessRuleException(&quot;Tax rate mismatch for Invoice &quot; &amp; str_InvoiceNumber &amp; &quot;. Extracted Tax Rate: &quot; &amp; CInt(dbl_TaxRate * 100) &amp; &quot;, Calculated Tax Rate: &quot; &amp; int_CalculatedTaxRate)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <If sap2010:Annotation.AnnotationText="Validate grand total matches the combined total of subtotal and the tax amount." Condition="[Math.Abs(dbl_Total-(dbl_Subtotal + dbl_TaxAmount)) &gt; 0.01]" DisplayName="Validate Grand Total" sap:VirtualizedContainerService.HintSize="488,102" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw Exception="[New BusinessRuleException(&quot;Validation Failed: Subtotal plus Tax does not equal Grand Total for Invoice &quot; &amp; str_InvoiceNumber)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Check if the invoice already exists in Supabase." DataTable="[dt_DuplicateCheck]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="488,178" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="SELECT COUNT(invoice_id) FROM public.processed_invoices &#xA;WHERE vendor_name = ? AND invoice_number = ?;">
                     <ui:ExecuteQuery.Parameters>
                       <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[str_VendorName]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="@InvNum">[str_InvoiceNumber]</InArgument>
@@ -499,7 +546,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExecuteQuery>
-                  <If sap2010:Annotation.AnnotationText="If the invoice already exists in Supabase, throw an exception to flag it for review." Condition="[CInt(dt_DuplicateCheck.Rows(0)(0)) &gt; 0]" sap:VirtualizedContainerService.HintSize="478,590" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If sap2010:Annotation.AnnotationText="If the invoice already exists in Supabase, throw an exception to flag it for review." Condition="[CInt(dt_DuplicateCheck.Rows(0)(0)) &gt; 0]" sap:VirtualizedContainerService.HintSize="488,590" sap2010:WorkflowViewState.IdRef="If_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -526,7 +573,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Add the Invoice to public.processed_invoices with the &quot;PROCESSING&quot; status." DataTable="[dt_InvoiceID]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="478,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xD;&#xA;VALUES (?, ?, ?, ?, ?, 'PENDING') &#xD;&#xA;ON CONFLICT (vendor_name, invoice_number) &#xD;&#xA;DO UPDATE SET processing_status = 'PENDING' &#xD;&#xA;RETURNING invoice_id;">
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Add the Invoice to public.processed_invoices with the &quot;PROCESSING&quot; status." DataTable="[dt_InvoiceID]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="488,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xA;VALUES (?, ?, ?, ?, ?, 'PENDING') &#xA;ON CONFLICT (vendor_name, invoice_number) &#xA;DO UPDATE SET processing_status = 'PENDING' &#xA;RETURNING invoice_id;">
                     <ui:ExecuteQuery.Parameters>
                       <InArgument x:TypeArguments="x:String" x:Key="@InvNum">[str_InvoiceNumber]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[str_VendorName]</InArgument>
@@ -540,7 +587,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExecuteQuery>
-                  <Assign DisplayName="Save the Generated InvoiceID" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign DisplayName="Save the Generated InvoiceID" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[db_InvoiceID]</OutArgument>
                     </Assign.To>
@@ -548,7 +595,7 @@
                       <InArgument x:TypeArguments="x:String">[dt_InvoiceID.Rows(0)(0).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <TryCatch DisplayName="Try Catch for Adding Invoice to Odoo and Supabase" sap:VirtualizedContainerService.HintSize="478,1651" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch for Adding Invoice to Odoo and Supabase" sap:VirtualizedContainerService.HintSize="488,1651" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <TryCatch.Try>
                       <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,1185" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>
