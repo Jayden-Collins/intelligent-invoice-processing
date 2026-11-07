@@ -166,9 +166,12 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1656,9478" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1557,9758" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arr_InvoiceFiles" />
       <Variable x:TypeArguments="x:String" Name="str_DBConnectionString" />
@@ -212,13 +215,13 @@
       </Assign.Value>
     </Assign>
     <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="560,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="560,8805" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="560,9085" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,8683" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,8963" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="njl:JObject" Name="extractedData" />
             </Sequence.Variables>
@@ -227,7 +230,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="524,8623" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="524,8903" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="x:String" Name="db_InvoiceID" />
                 <Variable x:TypeArguments="x:String" Name="str_CurrentStep" />
@@ -235,15 +238,15 @@
                 <Variable x:TypeArguments="x:String" Name="str_VendorName" />
               </TryCatch.Variables>
               <TryCatch.Try>
-                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="522,7805" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="522,8085" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="str_VendorTaxID" />
-                    <Variable x:TypeArguments="x:Double" Name="dbl_Total" />
+                    <Variable x:TypeArguments="x:Decimal" Name="dbl_Total" />
                     <Variable x:TypeArguments="sd:DataTable" Name="dt_LineItems" />
-                    <Variable x:TypeArguments="x:Double" Name="dbl_Subtotal" />
-                    <Variable x:TypeArguments="x:Double" Name="dbl_TaxAmount" />
-                    <Variable x:TypeArguments="x:Double" Name="dbl_TaxRate" />
-                    <Variable x:TypeArguments="x:Double" Name="dbl_CalculatedSubtotal" />
+                    <Variable x:TypeArguments="x:Decimal" Name="dbl_Subtotal" />
+                    <Variable x:TypeArguments="x:Decimal" Name="dbl_TaxAmount" />
+                    <Variable x:TypeArguments="x:Decimal" Name="dbl_TaxRate" />
+                    <Variable x:TypeArguments="x:Decimal" Name="dbl_CalculatedSubtotal" />
                     <Variable x:TypeArguments="x:Int32" Name="int_CalculatedTaxRate" />
                     <Variable x:TypeArguments="x:String" Name="savedInvoiceID" />
                     <Variable x:TypeArguments="sd:DataTable" Name="dt_DuplicateCheck" />
@@ -316,34 +319,34 @@
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
                           <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Double">[dbl_Subtotal]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Decimal">[dbl_Subtotal]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[If(extractedData("subtotal") IsNot Nothing AndAlso extractedData("subtotal").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("subtotal")), 0.0)]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal">[If(extractedData("subtotal") IsNot Nothing AndAlso extractedData("subtotal").Type &lt;&gt; JTokenType.Null, Math.Round(CDec(extractedData("subtotal")), 2), 0D)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
                           <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Double">[dbl_TaxRate]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Decimal">[dbl_TaxRate]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[If(extractedData("tax_rate") IsNot Nothing AndAlso extractedData("tax_rate").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("tax_rate")), 0.0)]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal">[If(extractedData("tax_rate") IsNot Nothing AndAlso extractedData("tax_rate").Type &lt;&gt; JTokenType.Null, CDec(extractedData("tax_rate")), 0D)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
                           <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Double">[dbl_TaxAmount]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Decimal">[dbl_TaxAmount]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[If(extractedData("tax_amount") IsNot Nothing AndAlso extractedData("tax_amount").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("tax_amount")), 0.0)]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal">[If(extractedData("tax_amount") IsNot Nothing AndAlso extractedData("tax_amount").Type &lt;&gt; JTokenType.Null, Math.Round(CDec(extractedData("tax_amount")), 2), 0D)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
                           <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Double">[dbl_Total]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Decimal">[dbl_Total]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[If(extractedData("grand_total") IsNot Nothing AndAlso extractedData("grand_total").Type &lt;&gt; JTokenType.Null, CDbl(extractedData("grand_total")), 0.0)]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal">[If(extractedData("grand_total") IsNot Nothing AndAlso extractedData("grand_total").Type &lt;&gt; JTokenType.Null, Math.Round(CDec(extractedData("grand_total")), 2), 0D)]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                       </scg:List>
@@ -371,7 +374,7 @@
                       <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_DBConnection">[dbConnection]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BasicAuthSecurePassword="{x:Null}" BasicAuthUsername="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" TextPayload="{x:Null}" sap2010:Annotation.AnnotationText="Use the mock Flask API to verify the Tax ID." AuthenticationType="None" ContinueOnError="True" DisableSslVerification="False" DisplayName="HTTP Request" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xD;&#xA;{&#xD;&#xA;&#x9;New FileFormDataPart(),&#xD;&#xA;&#x9;New BinaryFormDataPart(),&#xD;&#xA;&#x9;New TextFormDataPart()&#xD;&#xA;}]" sap:VirtualizedContainerService.HintSize="488,308" sap2010:WorkflowViewState.IdRef="NetHttpRequest_1" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="GET" Multiplier="2" Parameters="[new System.Collections.Generic.Dictionary(Of System.String, System.String) From { { &quot;tax_id&quot;, str_VendorTaxID } }]" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="https://jaydenn.pythonanywhere.com/verify-tax" Result="[str_TaxAPIRes]" RetryCount="3" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xD;&#xA;{&#xD;&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xD;&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+                  <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BasicAuthSecurePassword="{x:Null}" BasicAuthUsername="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" TextPayload="{x:Null}" sap2010:Annotation.AnnotationText="Use the mock Flask API to verify the Tax ID." AuthenticationType="None" ContinueOnError="True" DisableSslVerification="False" DisplayName="HTTP Request" EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xA;{&#xA;&#x9;New FileFormDataPart(),&#xA;&#x9;New BinaryFormDataPart(),&#xA;&#x9;New TextFormDataPart()&#xA;}]" sap:VirtualizedContainerService.HintSize="488,308" sap2010:WorkflowViewState.IdRef="NetHttpRequest_1" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="GET" Multiplier="2" Parameters="[new System.Collections.Generic.Dictionary(Of System.String, System.String) From { { &quot;tax_id&quot;, str_VendorTaxID } }]" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="https://jaydenn.pythonanywhere.com/verify-tax" Result="[str_TaxAPIRes]" RetryCount="3" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xA;{&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
                     <uwah:NetHttpRequest.TimeoutInMiliseconds>
                       <InArgument x:TypeArguments="s:Nullable(x:Int32)">
                         <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="10000" />
@@ -434,7 +437,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <If sap2010:Annotation.AnnotationText="Validate individual line calculations (quantity * unit_price = line_total)" Condition="[dt_LineItems.AsEnumerable().Any(Function(row) Math.Abs((Convert.ToDouble(row(&quot;quantity&quot;)) * Convert.ToDouble(row(&quot;unit_price&quot;))) - Convert.ToDouble(row(&quot;line_total&quot;))) &gt; 0.01)]" DisplayName="Validate Line Totals" sap:VirtualizedContainerService.HintSize="488,284" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If sap2010:Annotation.AnnotationText="Validate individual line calculations (quantity * unit_price = line_total)" Condition="[dt_LineItems.AsEnumerable().Any(Function(row) Math.Abs((Convert.ToDecimal(row(&quot;quantity&quot;)) * Convert.ToDecimal(row(&quot;unit_price&quot;))) - Convert.ToDecimal(row(&quot;line_total&quot;))) &gt; 0.01D)]" DisplayName="Validate Line Totals" sap:VirtualizedContainerService.HintSize="488,284" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -462,7 +465,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[Math.Abs( (Convert.ToDouble( CurrentRow(&quot;quantity&quot;) ) * Convert.ToDouble(CurrentRow(&quot;unit_price&quot;) ) ) - Convert.ToDouble( CurrentRow(&quot;line_total&quot;) )) &gt; 0.01]" sap:VirtualizedContainerService.HintSize="452,361" sap2010:WorkflowViewState.IdRef="If_7">
+                          <If Condition="[Math.Abs( (Convert.ToDecimal( CurrentRow(&quot;quantity&quot;) ) * Convert.ToDecimal(CurrentRow(&quot;unit_price&quot;) ) ) - Convert.ToDecimal( CurrentRow(&quot;line_total&quot;) )) &gt; 0.01D]" sap:VirtualizedContainerService.HintSize="452,361" sap2010:WorkflowViewState.IdRef="If_7">
                             <If.Then>
                               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                 <sap:WorkflowViewStateService.ViewState>
@@ -489,13 +492,13 @@
                   </ui:ForEachRow>
                   <Assign DisplayName="Calculate Subtotal From Line Items" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
-                      <OutArgument x:TypeArguments="x:Double">[dbl_CalculatedSubtotal]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Decimal">[dbl_CalculatedSubtotal]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Double">[dt_LineItems.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("line_total")))]</InArgument>
+                      <InArgument x:TypeArguments="x:Decimal">[dt_LineItems.AsEnumerable().Sum(Function(row) Convert.ToDecimal(row("line_total")))]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[Math.Abs( dbl_Subtotal - dbl_CalculatedSubtotal ) &gt; 0.01]" DisplayName="Validate Subtotal matches Sum of Line Item Totals" sap:VirtualizedContainerService.HintSize="488,337" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If Condition="[Math.Abs(dbl_Subtotal - dbl_CalculatedSubtotal) &gt; 0.01D]" DisplayName="Validate Subtotal matches Sum of Line Item Totals" sap:VirtualizedContainerService.HintSize="488,337" sap2010:WorkflowViewState.IdRef="If_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -552,11 +555,11 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <If sap2010:Annotation.AnnotationText="Validate grand total matches the combined total of subtotal and the tax amount." Condition="[Math.Abs(dbl_Total-(dbl_Subtotal + dbl_TaxAmount)) &gt; 0.01]" DisplayName="Validate Grand Total" sap:VirtualizedContainerService.HintSize="488,102" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If sap2010:Annotation.AnnotationText="Validate grand total matches the combined total of subtotal and the tax amount." Condition="[Math.Abs(dbl_Total-(dbl_Subtotal + dbl_TaxAmount)) &gt; 0.01D]" DisplayName="Validate Grand Total" sap:VirtualizedContainerService.HintSize="488,382" sap2010:WorkflowViewState.IdRef="If_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -611,11 +614,21 @@
                   </If>
                   <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Add the Invoice to public.processed_invoices with the &quot;PROCESSING&quot; status." DataTable="[dt_InvoiceID]" DisplayName="Run Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="488,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xA;VALUES (?, ?, ?, ?, ?, 'PENDING') &#xA;ON CONFLICT (vendor_name, invoice_number) &#xA;DO UPDATE SET processing_status = 'PENDING' &#xA;RETURNING invoice_id;">
                     <ui:ExecuteQuery.Parameters>
-                      <InArgument x:TypeArguments="x:String" x:Key="@InvNum">[str_InvoiceNumber]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[str_VendorName]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@TaxID">[str_VendorTaxID]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="@TaxAmount">[dbl_TaxAmount]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="@Total">[dbl_Total]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@InvNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_InvoiceNumber" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@Vendor">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_VendorName" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@TaxID">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_VendorTaxID" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Decimal" x:Key="@TaxAmount">
+                        <VisualBasicValue x:TypeArguments="x:Decimal" ExpressionText="dbl_TaxAmount" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Decimal" x:Key="@Total">
+                        <VisualBasicValue x:TypeArguments="x:Decimal" ExpressionText="dbl_Total" />
+                      </InArgument>
                     </ui:ExecuteQuery.Parameters>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -660,12 +673,12 @@
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="x:String" x:Key="in_SupabaseConnString">[str_DBConnectionString]</InArgument>
                             <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_LineItems">[dt_LineItems]</InArgument>
-                            <InArgument x:TypeArguments="x:Double" x:Key="in_TotalAmount">[dbl_Total]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal" x:Key="in_TotalAmount">[dbl_Total]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[str_InvoiceNumber]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_VendorName">[str_VendorName]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_VendorTaxID">[str_VendorTaxID]</InArgument>
                             <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceID">[savedInvoiceID]</OutArgument>
-                            <InArgument x:TypeArguments="x:Double" x:Key="in_TaxAmount">[dbl_TaxAmount]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal" x:Key="in_TaxAmount">[dbl_TaxAmount]</InArgument>
                             <InArgument x:TypeArguments="x:Int32" x:Key="in_TaxRate">[CInt(dbl_TaxRate * 100)]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
@@ -697,8 +710,8 @@
                             <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[str_InvoiceNumber]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_VendorName">[str_VendorName]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_VendorTaxID">[str_VendorTaxID]</InArgument>
-                            <InArgument x:TypeArguments="x:Double" x:Key="in_TaxAmount">[dbl_TaxAmount]</InArgument>
-                            <InArgument x:TypeArguments="x:Double" x:Key="in_TotalAmount">[dbl_Total]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal" x:Key="in_TaxAmount">[dbl_TaxAmount]</InArgument>
+                            <InArgument x:TypeArguments="x:Decimal" x:Key="in_TotalAmount">[dbl_Total]</InArgument>
                             <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceID">[db_InvoiceID]</OutArgument>
                             <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_LineItems">[dt_LineItems]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
@@ -748,8 +761,8 @@
                       </Sequence>
                     </TryCatch.Finally>
                   </TryCatch>
-                  <ui:DatabaseDisconnect DatabaseConnection="[dbConnection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="478,57" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
-                  <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Success" DisplayName="Move File to /Success Folder" sap:VirtualizedContainerService.HintSize="478,184" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[currentFile]" />
+                  <ui:DatabaseDisconnect DatabaseConnection="[dbConnection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+                  <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Success" DisplayName="Move File to /Success Folder" sap:VirtualizedContainerService.HintSize="488,184" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[currentFile]" />
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -758,29 +771,29 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="512,596" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="522,596" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of Database_Commit" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Error" sap:VirtualizedContainerService.HintSize="488,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="in_Message">["Transaction failed: " &amp; exception.Message]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_LogLevel">INFO</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_LogLevel">ERROR</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_TrxID">[If(String.IsNullOrEmpty(str_VendorName) OrElse String.IsNullOrEmpty(str_InvoiceNumber), Path.GetFileNameWithoutExtension(currentFile), str_VendorName &amp; "_" &amp; str_InvoiceNumber)]</InArgument>
                           <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_DBConnection">[dbConnection]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_StepName">[str_CurrentStep]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Transaction Failed for &quot; &amp; If(String.IsNullOrEmpty(str_VendorName) OrElse String.IsNullOrEmpty(str_InvoiceNumber), Path.GetFileNameWithoutExtension(currentFile), str_VendorName &amp; &quot;_&quot; &amp; str_InvoiceNumber) &amp; exception.Message]" />
-                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Failed" DisplayName="Move Invalid Files to /Failed Folder" sap:VirtualizedContainerService.HintSize="478,184" sap2010:WorkflowViewState.IdRef="MoveFile_1" Path="[currentFile]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Transaction Failed for &quot; &amp; If(String.IsNullOrEmpty(str_VendorName) OrElse String.IsNullOrEmpty(str_InvoiceNumber), Path.GetFileNameWithoutExtension(currentFile), str_VendorName &amp; &quot;_&quot; &amp; str_InvoiceNumber) &amp; exception.Message]" />
+                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Failed" DisplayName="Move Invalid Files to /Failed Folder" sap:VirtualizedContainerService.HintSize="488,184" sap2010:WorkflowViewState.IdRef="MoveFile_1" Path="[currentFile]" />
                     </Sequence>
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
               <TryCatch.Finally>
-                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="512,90" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="522,90" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>

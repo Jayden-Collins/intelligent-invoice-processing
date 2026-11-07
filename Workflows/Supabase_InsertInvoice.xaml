@@ -4,8 +4,8 @@
     <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
     <x:Property Name="in_VendorName" Type="InArgument(x:String)" />
     <x:Property Name="in_VendorTaxID" Type="InArgument(x:String)" />
-    <x:Property Name="in_TaxAmount" Type="InArgument(x:Double)" />
-    <x:Property Name="in_TotalAmount" Type="InArgument(x:Double)" />
+    <x:Property Name="in_TaxAmount" Type="InArgument(x:Decimal)" />
+    <x:Property Name="in_TotalAmount" Type="InArgument(x:Decimal)" />
     <x:Property Name="out_InvoiceID" Type="OutArgument(x:String)" />
     <x:Property Name="in_dt_LineItems" Type="InArgument(sd:DataTable)" />
   </x:Members>
@@ -51,6 +51,7 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -117,7 +118,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1740,1259" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="1557,1259" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Result" />
     </Sequence.Variables>
@@ -132,13 +133,23 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="INSERT the invoice into the public.processed_invoices table." DataTable="[dt_Result]" DisplayName="Run Query" ExistingDbConnection="[in_DBConnection]" sap:VirtualizedContainerService.HintSize="616,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xD;&#xA;VALUES (?, ?, ?, ?, ?, 'VERIFIED')&#xD;&#xA;ON CONFLICT (vendor_name, invoice_number)&#xD;&#xA;DO UPDATE SET&#xD;&#xA;&#x9;vendor_tax_id = EXCLUDED.vendor_tax_id,&#xD;&#xA;&#x9;tax_amount = EXCLUDED.tax_amount,&#xD;&#xA;&#x9;total_amount = EXCLUDED.total_amount,&#xD;&#xA;&#x9;processing_status = EXCLUDED.processing_status&#xD;&#xA;RETURNING invoice_id;">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="INSERT the invoice into the public.processed_invoices table." DataTable="[dt_Result]" DisplayName="Run Query" ExistingDbConnection="[in_DBConnection]" sap:VirtualizedContainerService.HintSize="616,192" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="INSERT INTO public.processed_invoices (invoice_number, vendor_name, vendor_tax_id, tax_amount, total_amount, processing_status) &#xA;VALUES (?, ?, ?, ?, ?, 'VERIFIED')&#xA;ON CONFLICT (vendor_name, invoice_number)&#xA;DO UPDATE SET&#xA;&#x9;vendor_tax_id = EXCLUDED.vendor_tax_id,&#xA;&#x9;tax_amount = EXCLUDED.tax_amount,&#xA;&#x9;total_amount = EXCLUDED.total_amount,&#xA;&#x9;processing_status = EXCLUDED.processing_status&#xA;RETURNING invoice_id;">
         <ui:ExecuteQuery.Parameters>
-          <InArgument x:TypeArguments="x:String" x:Key="@InvNum">[in_InvoiceNumber]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[in_VendorName]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="@TaxID">[in_VendorTaxID]</InArgument>
-          <InArgument x:TypeArguments="x:Double" x:Key="@TaxAmount">[in_TaxAmount]</InArgument>
-          <InArgument x:TypeArguments="x:Double" x:Key="@Total">[in_TotalAmount]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="@InvNum">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceNumber" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="@Vendor">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_VendorName" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="@TaxID">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_VendorTaxID" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Decimal" x:Key="@TaxAmount">
+            <VisualBasicValue x:TypeArguments="x:Decimal" ExpressionText="in_TaxAmount" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Decimal" x:Key="@Total">
+            <VisualBasicValue x:TypeArguments="x:Decimal" ExpressionText="in_TotalAmount" />
+          </InArgument>
         </ui:ExecuteQuery.Parameters>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">

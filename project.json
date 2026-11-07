@@ -5,6 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Database.Activities": "[2.1.1]",
+    "UiPath.Excel.Activities": "[3.6.0-preview]",
     "UiPath.IntegrationService.Activities": "[1.33.0]",
     "UiPath.Mail.Activities": "[2.12.10]",
     "UiPath.OmniPage.Activities": "[2.1.1]",
@@ -53,6 +54,12 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "ba9a525b-5737-4303-bd73-dfeb8f3eadcb",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Process_PurchaseOrder.xaml",
+      "uniqueId": "3cac0568-dd66-4bfa-a462-583f4f75fec4",
       "input": [],
       "output": []
     }

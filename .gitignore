@@ -7,6 +7,7 @@ Data/Input/*
 Data/Output/*
 Data/Temp*
 Data/Archive/*
+Data/PO/*
 !Data/**/.gitkeep
 
 Thumbs.db
