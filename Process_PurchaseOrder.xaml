@@ -44,6 +44,10 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Numerics</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -115,9 +119,10 @@
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Process_PurchaseOrder" sap:VirtualizedContainerService.HintSize="1557,5700" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Process_PurchaseOrder" sap:VirtualizedContainerService.HintSize="1557,5612" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_DBConnectionString" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConnection" />
@@ -129,7 +134,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="DB Connection String" sap:VirtualizedContainerService.HintSize="524,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="DB Connection String" sap:VirtualizedContainerService.HintSize="756,175" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[str_DBConnectionString]</OutArgument>
       </Assign.To>
@@ -137,8 +142,8 @@
         <InArgument x:TypeArguments="x:String">["Driver={PostgreSQL UNICODE};Server=aws-0-ap-southeast-2.pooler.supabase.com;Port=6543;Database=postgres;Uid=postgres.tgdtmfxtiewmxrdtjrrp;Pwd=-BqJNS2TrLsgY-b;"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="524,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="524,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:DatabaseConnect DisplayName="Connect to Supabase" sap:VirtualizedContainerService.HintSize="756,92" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="[str_DBConnectionString]" DatabaseConnection="[dbConnection]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="756,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -160,7 +165,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEachFileX DisplayName="For Each File in Folder" Filter="*.xlsx" Folder="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;PO&quot;)]" sap:VirtualizedContainerService.HintSize="524,5182" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+    <ui:ForEachFileX DisplayName="For Each File in Folder" Filter="*.xlsx" Folder="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;PO&quot;)]" sap:VirtualizedContainerService.HintSize="756,5094" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
       <ui:ForEachFileX.Body>
         <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -169,7 +174,7 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,5000" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="754,4912" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_PO" />
               <Variable x:TypeArguments="sd:DataTable" Name="dt_POLines" />
@@ -179,15 +184,15 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="488,4940" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="720,4852" sap2010:WorkflowViewState.IdRef="TryCatch_2">
               <TryCatch.Try>
-                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="486,4187" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="718,4099" sap2010:WorkflowViewState.IdRef="Sequence_14">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="452,516" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Error" RetryInterval="00:00:05">
+                  <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="684,516" sap2010:WorkflowViewState.IdRef="RetryScope_1" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Error" RetryInterval="00:00:05">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
                         <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,309" sap2010:WorkflowViewState.IdRef="Sequence_16">
@@ -210,7 +215,7 @@
                       <ActivityFunc x:TypeArguments="x:Boolean" />
                     </ui:RetryScope.Condition>
                   </ui:RetryScope>
-                  <If sap2010:Annotation.AnnotationText="Verify that the purchase_order sheet contains the required headers/colulmns." Condition="[Not (dt_PO.Columns.Contains(&quot;PO Number&quot;) AndAlso dt_PO.Columns.Contains(&quot;Vendor Name&quot;) AndAlso dt_PO.Columns.Contains(&quot;Approved Total&quot;))]" sap:VirtualizedContainerService.HintSize="452,415" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If sap2010:Annotation.AnnotationText="Verify that the purchase_order sheet contains the required headers/colulmns." Condition="[Not (dt_PO.Columns.Contains(&quot;PO Number&quot;) AndAlso dt_PO.Columns.Contains(&quot;Vendor Name&quot;) AndAlso dt_PO.Columns.Contains(&quot;Approved Total&quot;))]" sap:VirtualizedContainerService.HintSize="684,415" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -236,7 +241,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="452,516" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Error" RetryInterval="00:00:05">
+                  <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="684,516" sap2010:WorkflowViewState.IdRef="RetryScope_2" LogRetriedExceptions="True" NumberOfRetries="3" RetriedExceptionsLogLevel="Error" RetryInterval="00:00:05">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
                         <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,309" sap2010:WorkflowViewState.IdRef="Sequence_17">
@@ -259,7 +264,7 @@
                       <ActivityFunc x:TypeArguments="x:Boolean" />
                     </ui:RetryScope.Condition>
                   </ui:RetryScope>
-                  <Assign sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign sap:VirtualizedContainerService.HintSize="684,175" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_CurrentStep]</OutArgument>
                     </Assign.To>
@@ -301,7 +306,7 @@
                       <InArgument x:TypeArguments="x:String">["PO_DB_Commit"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of PO Insertion" sap:VirtualizedContainerService.HintSize="452,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Log Start Of PO Insertion" sap:VirtualizedContainerService.HintSize="452,89" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Supabase_LogExecution.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Message">["Upserting headers into purchase_orders table." &amp; Path.GetFileName(CurrentFile.FullName)]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_LogLevel">INFO</InArgument>
@@ -330,17 +335,11 @@
                               <InArgument x:TypeArguments="x:String">["PO Header: " &amp; CurrentRow("PO Number").ToString]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Run Command" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="416,138" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="INSERT INTO public.purchase_orders (po_number, vendor_name, approved_amount) &#xD;&#xA;VALUES (?, ?, ?) &#xD;&#xA;ON CONFLICT (po_number) &#xD;&#xA;DO UPDATE SET &#xD;&#xA;    vendor_name = EXCLUDED.vendor_name,&#xD;&#xA;    approved_amount = EXCLUDED.approved_amount;">
+                          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Run Command" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="416,138" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="INSERT INTO public.purchase_orders (po_number, vendor_name, approved_amount) &#xA;VALUES (?, ?, ?) &#xA;ON CONFLICT (po_number) &#xA;DO UPDATE SET &#xA;    vendor_name = EXCLUDED.vendor_name,&#xA;    approved_amount = EXCLUDED.approved_amount;">
                             <ui:ExecuteNonQuery.Parameters>
-                              <InArgument x:TypeArguments="x:String" x:Key="@PO_Num">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;PO Number&quot;).ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@Vendor">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Vendor Name&quot;).ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Decimal" x:Key="@Amount">
-                                <VisualBasicValue x:TypeArguments="x:Decimal" ExpressionText="Math.Round(CDec(CurrentRow(&quot;Approved Total&quot;)), 2)" />
-                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="@PO_Num">[CurrentRow("PO Number").ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="@Vendor">[CurrentRow("Vendor Name").ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:Decimal" x:Key="@Amount">[Math.Round(CDec(CurrentRow("Approved Total")), 2)]</InArgument>
                             </ui:ExecuteNonQuery.Parameters>
                           </ui:ExecuteNonQuery>
                         </Sequence>
@@ -381,26 +380,14 @@
                               <InArgument x:TypeArguments="x:String">["PO Line Item: " &amp; CurrentRow("PO_ID").ToString &amp; " (Item: " &amp; CurrentRow("Item_ID").ToString &amp; ")"]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Run Command" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="416,138" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2" Sql="INSERT INTO public.po_line_items (po_number, item_code, description, quantity, unit_price, line_total) &#xD;&#xA;VALUES (?, ?, ?, ?, ?, ?) &#xD;&#xA;ON CONFLICT (po_number, item_code) &#xD;&#xA;DO UPDATE SET &#xD;&#xA;    description = EXCLUDED.description,&#xD;&#xA;    quantity = EXCLUDED.quantity,&#xD;&#xA;    unit_price = EXCLUDED.unit_price,&#xD;&#xA;    line_total = EXCLUDED.line_total;">
+                          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Run Command" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="416,138" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2" Sql="INSERT INTO public.po_line_items (po_number, item_code, description, quantity, unit_price, line_total) &#xA;VALUES (?, ?, ?, ?, ?, ?) &#xA;ON CONFLICT (po_number, item_code) &#xA;DO UPDATE SET &#xA;    description = EXCLUDED.description,&#xA;    quantity = EXCLUDED.quantity,&#xA;    unit_price = EXCLUDED.unit_price,&#xA;    line_total = EXCLUDED.line_total;">
                             <ui:ExecuteNonQuery.Parameters>
-                              <InArgument x:TypeArguments="x:String" x:Key="@PO_Num">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;PO_ID&quot;).ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@Code">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Item_ID&quot;).ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@Desc">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Item Description&quot;).ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@Qty">
-                                <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(CurrentRow(&quot;Quantity&quot;))" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Double" x:Key="@Price">
-                                <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Math.Round(CDec(CurrentRow(&quot;Unit Price&quot;)), 2)" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Double" x:Key="@Total">
-                                <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Math.Round(CDec(CurrentRow(&quot;Total&quot;)), 2)" />
-                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="@PO_Num">[CurrentRow("PO_ID").ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="@Code">[CurrentRow("Item_ID").ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="@Desc">[CurrentRow("Item Description").ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="@Qty">[CInt(CurrentRow("Quantity"))]</InArgument>
+                              <InArgument x:TypeArguments="x:Decimal" x:Key="@Price">[Math.Round(CDec(CurrentRow("Unit Price")), 2)]</InArgument>
+                              <InArgument x:TypeArguments="x:Decimal" x:Key="@Total">[Math.Round(CDec(CurrentRow("Total")), 2)]</InArgument>
                             </ui:ExecuteNonQuery.Parameters>
                           </ui:ExecuteNonQuery>
                         </Sequence>
@@ -421,7 +408,7 @@
                       <InArgument x:TypeArguments="x:String" x:Key="in_StepName">[str_CurrentStep]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Success" DisplayName="Move File to /Success Folder" sap:VirtualizedContainerService.HintSize="452,184" sap2010:WorkflowViewState.IdRef="MoveFile_3" Path="[CurrentFile.FullName]" />
+                  <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Success" DisplayName="Move File to /Success Folder" sap:VirtualizedContainerService.HintSize="452,184" sap2010:WorkflowViewState.IdRef="MoveFile_3" Overwrite="True" Path="[CurrentFile.FullName]" />
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -446,7 +433,7 @@
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Transaction Failed for &quot; &amp; Path.GetFileNameWithoutExtension(CurrentFile.FullName) &amp; &quot; at &quot; &amp; str_CurrentRecord &amp; &quot;. System Error: &quot; &amp; exception.Message]" />
-                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Failed" DisplayName="Move Invalid Files to /Failed Folder" sap:VirtualizedContainerService.HintSize="452,184" sap2010:WorkflowViewState.IdRef="MoveFile_2" Path="[CurrentFile.FullName]" />
+                      <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Data\Archive\Failed" DisplayName="Move Invalid Files to /Failed Folder" sap:VirtualizedContainerService.HintSize="452,184" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[CurrentFile.FullName]" />
                     </Sequence>
                   </ActivityAction>
                 </Catch>
@@ -465,6 +452,6 @@
         </ActivityAction>
       </ui:ForEachFileX.Body>
     </ui:ForEachFileX>
-    <ui:DatabaseDisconnect DatabaseConnection="[dbConnection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="524,48" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+    <ui:DatabaseDisconnect DatabaseConnection="[dbConnection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="478,48" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
   </Sequence>
 </Activity>

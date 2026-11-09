@@ -126,15 +126,22 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ERP" sap:VirtualizedContainerService.HintSize="1557,5952" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ERP" sap:VirtualizedContainerService.HintSize="1557,6258" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="796,5929" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="796,6235" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="794,5316" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <sap:WorkflowViewStateService.ViewState>
@@ -182,6 +189,7 @@
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Enter Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,297" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="4e1f7975-f7ed-476f-80c5-ab84f33347cc" Text="jaydrewcollins@gmail.com" Version="V5">
@@ -528,9 +536,10 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap2010:Annotation.AnnotationText="If there is an error when creating the bill in Odoo, take a screenshot." DisplayName="Catch" sap:VirtualizedContainerService.HintSize="794,456" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence sap2010:Annotation.AnnotationText="If there is an error when creating the bill in Odoo, take a screenshot." DisplayName="Catch" sap:VirtualizedContainerService.HintSize="794,697" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <Sequence.Variables>
                 <Variable x:TypeArguments="ui:Image" Name="img_UIError" />
+                <Variable x:TypeArguments="x:String" Name="str_ScreenshotPath" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -550,23 +559,31 @@
                   </ui:Target>
                 </ui:TakeScreenshot.Target>
               </ui:TakeScreenshot>
-              <ui:SaveImage DisplayName="Save Image" FileName="[&quot;\Data\Archive\Failed\&quot; &amp; in_InvoiceNumber &amp; &quot;_UI_Crash_&quot; &amp; Now.ToString(&quot;HHmmss&quot;) &amp; &quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="760,167" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[img_UIError]" />
-              <Rethrow sap2010:Annotation.AnnotationText="Trigger the Catch block in the Main sequence." sap:VirtualizedContainerService.HintSize="760,79" sap2010:WorkflowViewState.IdRef="Rethrow_1">
+              <Assign sap2010:Annotation.AnnotationText="Define the screenshot path." sap:VirtualizedContainerService.HintSize="760,206" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_ScreenshotPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["\Data\Archive\Failed\" &amp; in_InvoiceNumber &amp; "_UI_Crash_" &amp; Now.ToString("HHmmss") &amp; ".png"]</InArgument>
+                </Assign.Value>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </Rethrow>
+              </Assign>
+              <ui:SaveImage DisplayName="Save Image" FileName="[str_ScreenshotPath]" sap:VirtualizedContainerService.HintSize="760,167" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[img_UIError]" />
+              <Throw Exception="[New System.Exception(exception.Message &amp; &quot; | Screenshot saved at: &quot; &amp; str_ScreenshotPath, exception)]" sap:VirtualizedContainerService.HintSize="760,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="794,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="794,90" sap2010:WorkflowViewState.IdRef="Sequence_17">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </Sequence>
