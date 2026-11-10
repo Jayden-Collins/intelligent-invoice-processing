@@ -191,13 +191,14 @@
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1557,15287" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1557,15523" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arr_InvoiceFiles" />
       <Variable x:TypeArguments="x:String" Name="str_DBConnectionString" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConnection" />
       <Variable x:TypeArguments="sc:IEnumerable" Name="listMessages" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_SessionReport" />
+      <Variable x:TypeArguments="x:String" Name="str_ReportPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1088,14 +1089,27 @@
       </ui:ForEach.Body>
     </ui:ForEach>
     <ui:DatabaseDisconnect DatabaseConnection="[dbConnection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="596,57" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_2" />
-    <ui:WriteRange StartingCell="{x:Null}" sap2010:Annotation.AnnotationText="Create a new Excel file in the \Report folder to store the session report." DataTable="[dt_SessionReport]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="596,324" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Report" WorkbookPathResource="[UiPath.Platform.ResourceHandling.LocalResource.FromPath(&quot;Data\Reports\Execution_Summary_&quot; &amp; Now.ToString(&quot;yyyyMMdd_HHmmss&quot;) &amp; &quot;.xlsx&quot;)]">
+    <Assign sap2010:Annotation.AnnotationText="Define the file path for the session report to ensure the timestamp in the file name is consistent." sap:VirtualizedContainerService.HintSize="596,236" sap2010:WorkflowViewState.IdRef="Assign_15">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[str_ReportPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "Data", "Reports", "Execution_Summary_" &amp; Now.ToString("yyyyMMdd_HHmmss") &amp; ".xlsx")]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:WriteRange StartingCell="{x:Null}" sap2010:Annotation.AnnotationText="Create a new Excel file in the \Report folder to store the session report." DataTable="[dt_SessionReport]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="596,324" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Report" WorkbookPathResource="[UiPath.Platform.ResourceHandling.LocalResource.FromPath(str_ReportPath)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteRange>
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Action="Forward" sap2010:Annotation.AnnotationText="Send an email to the inbox with the session report attached." AttachmentInputMode="FilePaths" Body="The invoice processing bot has finished running. Please see the attached summary for successful entries and failures requiring manual review." ConnectionId="83cba61b-7ad5-41c5-8b92-e747c9da020b" ConnectionMode="IntegrationService" CreatedAfterSolutionSupport="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="596,434" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="[&quot;RPA Execution Summary: &quot; &amp; Now.ToString(&quot;dd-MMM-yyyy&quot;)]" To="rpagroup32244@gmail.com" UseISConnection="True" UseRichTextEditor="True">
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Action="Forward" sap2010:Annotation.AnnotationText="Send an email to the inbox with the session report attached." AttachmentInputMode="FilePaths" Body="The invoice processing bot has finished running. Please see the attached summary for successful entries and failures requiring manual review." ConnectionId="83cba61b-7ad5-41c5-8b92-e747c9da020b" ConnectionMode="IntegrationService" CreatedAfterSolutionSupport="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="596,434" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="[&quot;RPA Execution Summary: &quot; &amp; str_ReportPath]" To="rpagroup32244@gmail.com" UseISConnection="True" UseRichTextEditor="True">
       <ui:SendMail.AttachmentsBackup>
         <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
           <usau:BackupSlot.BackupValues>
@@ -1114,7 +1128,7 @@
       </ui:SendMail.ConnectionDetailsBackupSlot>
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">[Path.Combine(Environment.CurrentDirectory, "Data", "Reports", "Execution_Summary_" &amp; Now.ToString("yyyyMMdd_HHmmss") &amp; ".xlsx")]</InArgument>
+          <InArgument x:TypeArguments="x:String">[str_ReportPath]</InArgument>
         </scg:List>
       </ui:SendMail.Files>
       <sap:WorkflowViewStateService.ViewState>
