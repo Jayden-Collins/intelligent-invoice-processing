@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:uwah="clr-namespace:UiPath.Web.Activities.Http;assembly=UiPath.Web.Activities" xmlns:uwahm="clr-namespace:UiPath.Web.Activities.Http.Models;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:usau1="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:uwah="clr-namespace:UiPath.Web.Activities.Http;assembly=UiPath.Web.Activities" xmlns:uwahm="clr-namespace:UiPath.Web.Activities.Http.Models;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -88,6 +88,12 @@
       <x:String>UiPath.Platform</x:String>
       <x:String>UiPath.MicrosoftOffice365.Activities.Mail.Enums</x:String>
       <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Gmail.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -189,9 +195,12 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1557,15523" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1541,15766" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arr_InvoiceFiles" />
       <Variable x:TypeArguments="x:String" Name="str_DBConnectionString" />
@@ -199,6 +208,7 @@
       <Variable x:TypeArguments="sc:IEnumerable" Name="listMessages" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_SessionReport" />
       <Variable x:TypeArguments="x:String" Name="str_ReportPath" />
+      <Variable x:TypeArguments="upr:ILocalResource" Name="res_ReportFile" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -266,13 +276,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BuildDataTable>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="596,13147" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentFile" sap:VirtualizedContainerService.HintSize="596,13168" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arr_InvoiceFiles]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="currentFile" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="594,13016" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="594,13037" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="njl:JObject" Name="extractedData" />
             </Sequence.Variables>
@@ -281,7 +291,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="560,12956" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="560,12977" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="x:String" Name="db_InvoiceID" />
                 <Variable x:TypeArguments="x:String" Name="str_CurrentStep" />
@@ -1014,7 +1024,7 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="558,1331" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="558,1352" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1034,32 +1044,32 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
-                      <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Action="Forward" sap2010:Annotation.AnnotationText="Send an email to the inbox with the session report attached." AttachmentInputMode="FilePaths" Body="[&quot;Error on &quot; &amp; currentFile &amp; &quot;: &quot; &amp; exception.Message &amp; &quot;.&quot;]" ConnectionId="83cba61b-7ad5-41c5-8b92-e747c9da020b" ConnectionMode="IntegrationService" CreatedAfterSolutionSupport="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="524,438" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="RPA Alert: Invoice Processing Failed" To="rpagroup32244@gmail.com" UseISConnection="True" UseRichTextEditor="True">
-                        <ui:SendMail.AttachmentsBackup>
-                          <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
-                            <usau:BackupSlot.BackupValues>
-                              <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
-                                <x:Null />
+                      <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" sap2010:Annotation.AnnotationText="Notify the operator by sending an email with the file name and the error message." AttachmentInputMode="UseExisting" AuthScopesInvalid="False" ConnectionId="1cd9e5e1-9954-4523-9891-dd516adf09bf" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="524,459" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="TEXT" SaveAsDraft="False" Subject="RPA Alert: Invoice Processing Failed" TextBody="[&quot;Error on &quot; &amp; currentFile &amp; &quot;: &quot; &amp; exception.Message &amp; &quot;.&quot;]" To="[New String(){&quot;rpagroup32244@gmail.com&quot;}]" UseConnectionService="True">
+                        <uga:SendEmailConnections.Attachments>
+                          <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
+                        </uga:SendEmailConnections.Attachments>
+                        <uga:SendEmailConnections.AttachmentsBackup>
+                          <usau1:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
+                            <usau1:BackupSlot.BackupValues>
+                              <scg:Dictionary x:TypeArguments="ugage:AttachmentInputMode, scg:List(x:Object)" />
+                            </usau1:BackupSlot.BackupValues>
+                          </usau1:BackupSlot>
+                        </uga:SendEmailConnections.AttachmentsBackup>
+                        <uga:SendEmailConnections.InputTypeBackup>
+                          <usau1:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="TEXT">
+                            <usau1:BackupSlot.BackupValues>
+                              <scg:List x:TypeArguments="x:Object" x:Key="HTML" Capacity="1">
+                                <InArgument x:TypeArguments="x:String" />
                               </scg:List>
-                            </usau:BackupSlot.BackupValues>
-                          </usau:BackupSlot>
-                        </ui:SendMail.AttachmentsBackup>
-                        <ui:SendMail.ConnectionDetailsBackupSlot>
-                          <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="IntegrationService">
-                            <usau:BackupSlot.BackupValues>
-                              <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
-                            </usau:BackupSlot.BackupValues>
-                          </usau:BackupSlot>
-                        </ui:SendMail.ConnectionDetailsBackupSlot>
-                        <ui:SendMail.Files>
-                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                        </ui:SendMail.Files>
+                            </usau1:BackupSlot.BackupValues>
+                          </usau1:BackupSlot>
+                        </uga:SendEmailConnections.InputTypeBackup>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                      </ui:SendMail>
+                      </uga:SendEmailConnections>
                       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,175" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Transaction Failed for &quot; &amp; If(String.IsNullOrEmpty(str_VendorName) OrElse String.IsNullOrEmpty(str_InvoiceNumber), Path.GetFileNameWithoutExtension(currentFile), str_VendorName &amp; &quot;_&quot; &amp; str_InvoiceNumber) &amp; exception.Message]" />
                       <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Insert a record to the session report data table to store information about the failed invoice." ArrayRow="[{Path.GetFileName(currentFile), str_InvoiceNumber, str_VendorName, dbl_Total.ToString(&quot;F2&quot;), &quot;FAILED&quot;, exception.Message}]" DataTable="[dt_SessionReport]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="524,266" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
                         <sap:WorkflowViewStateService.ViewState>
@@ -1102,6 +1112,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
+    <ui:CreateNewWorkbook WorkbookFile="{x:Null}" sap2010:Annotation.AnnotationText="Create the Excel file before writing to it." ConflictResolution="Replace" DisplayName="Create New Workbook" sap:VirtualizedContainerService.HintSize="596,206" sap2010:WorkflowViewState.IdRef="CreateNewWorkbook_1" SheetName="Report" WorkbookPath="[str_ReportPath]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CreateNewWorkbook>
     <ui:WriteRange StartingCell="{x:Null}" sap2010:Annotation.AnnotationText="Create a new Excel file in the \Report folder to store the session report." DataTable="[dt_SessionReport]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="596,324" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Report" WorkbookPathResource="[UiPath.Platform.ResourceHandling.LocalResource.FromPath(str_ReportPath)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1109,33 +1126,40 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteRange>
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Action="Forward" sap2010:Annotation.AnnotationText="Send an email to the inbox with the session report attached." AttachmentInputMode="FilePaths" Body="The invoice processing bot has finished running. Please see the attached summary for successful entries and failures requiring manual review." ConnectionId="83cba61b-7ad5-41c5-8b92-e747c9da020b" ConnectionMode="IntegrationService" CreatedAfterSolutionSupport="True" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="596,434" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="[&quot;RPA Execution Summary: &quot; &amp; str_ReportPath]" To="rpagroup32244@gmail.com" UseISConnection="True" UseRichTextEditor="True">
-      <ui:SendMail.AttachmentsBackup>
-        <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
-          <usau:BackupSlot.BackupValues>
-            <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
-              <x:Null />
-            </scg:List>
-          </usau:BackupSlot.BackupValues>
-        </usau:BackupSlot>
-      </ui:SendMail.AttachmentsBackup>
-      <ui:SendMail.ConnectionDetailsBackupSlot>
-        <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="IntegrationService">
-          <usau:BackupSlot.BackupValues>
-            <scg:Dictionary x:TypeArguments="umae:ConnectionDetails, scg:List(x:Object)" />
-          </usau:BackupSlot.BackupValues>
-        </usau:BackupSlot>
-      </ui:SendMail.ConnectionDetailsBackupSlot>
-      <ui:SendMail.Files>
-        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">[str_ReportPath]</InArgument>
+    <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" sap2010:Annotation.AnnotationText="Notify the operator by sending an email with the session report attached." AttachmentInputMode="Builder" AuthScopesInvalid="False" ConnectionId="1cd9e5e1-9954-4523-9891-dd516adf09bf" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="596,450" sap2010:WorkflowViewState.IdRef="SendEmailConnections_2" Importance="Normal" InputType="TEXT" SaveAsDraft="False" Subject="[&quot;RPA Execution Summary: &quot; &amp; str_ReportPath]" TextBody="The invoice processing bot has finished running. Please see the attached summary for successful entries and failures requiring manual review." To="[New String(){&quot;rpagroup32244@gmail.com&quot;}]" UseConnectionService="True">
+      <uga:SendEmailConnections.ArgumentAttachments>
+        <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
+          <InArgument x:TypeArguments="upr:IResource">[UiPath.Platform.ResourceHandling.LocalResource.FromPath(str_ReportPath)]</InArgument>
         </scg:List>
-      </ui:SendMail.Files>
+      </uga:SendEmailConnections.ArgumentAttachments>
+      <uga:SendEmailConnections.AttachmentsBackup>
+        <usau1:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="Builder">
+          <usau1:BackupSlot.BackupValues>
+            <scg:List x:TypeArguments="x:Object" x:Key="UseExisting" Capacity="1">
+              <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[str_ReportPath]</InArgument>
+            </scg:List>
+            <scg:List x:TypeArguments="x:Object" x:Key="Builder" Capacity="1">
+              <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
+                <InArgument x:TypeArguments="upr:IResource">[str_ReportPath]</InArgument>
+              </scg:List>
+            </scg:List>
+          </usau1:BackupSlot.BackupValues>
+        </usau1:BackupSlot>
+      </uga:SendEmailConnections.AttachmentsBackup>
+      <uga:SendEmailConnections.InputTypeBackup>
+        <usau1:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="TEXT">
+          <usau1:BackupSlot.BackupValues>
+            <scg:List x:TypeArguments="x:Object" x:Key="HTML" Capacity="1">
+              <InArgument x:TypeArguments="x:String" />
+            </scg:List>
+          </usau1:BackupSlot.BackupValues>
+        </usau1:BackupSlot>
+      </uga:SendEmailConnections.InputTypeBackup>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:SendMail>
+    </uga:SendEmailConnections>
   </Sequence>
 </Activity>
